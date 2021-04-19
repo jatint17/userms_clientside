@@ -36,7 +36,7 @@ export default function FindById() {
 
     let validateId = (userId) => {
         if (userId < 0) {
-            return validationMessage.userIdValidation;
+            return validationMessage.idValidation;
         }
         return undefined;
     }

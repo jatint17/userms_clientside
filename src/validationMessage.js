@@ -1,5 +1,5 @@
 const validationMessage = {
-    userIdValidation: "Id cannot be negative"
+    idValidation: "Id cannot be negative"
 };
 
 export default validationMessage;
