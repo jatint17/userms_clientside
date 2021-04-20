@@ -3,7 +3,7 @@ import DisplayUserDetails from "./DisplayUserDetails";
 export default function AddCustomer(){
     const usernameRef = React.createRef();
     const passwordRef = React.createRef();
-    let mockCustomer = {id: 1, username:"appu", password:"123456", role: "Customer"};
+    //let mockCustomer = {id: 1, username:"appu", password:"123456", role: "Customer"};
     const initialState = {username: undefined, password: undefined, errorMsg:undefined, customer: undefined};
     const [currentState, setNewState] = useState(initialState);
 
