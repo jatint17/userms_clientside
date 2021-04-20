@@ -4,7 +4,7 @@ import validationConstants from "../validationConstants";
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  let mockAdmin = {id: 1, username:"appu", password:"123456", role: "Admin"};
+  let mockAdmin = {userId: 1, username:"appu", password:"123456", role: "Admin"};
   const initialState = {
     username: undefined,
     password: undefined,
