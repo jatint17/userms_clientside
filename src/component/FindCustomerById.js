@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
+import commonStyle1 from "../commonStyle1.module.css";
 
 export default function FindCustomerById() {
 
@@ -46,15 +47,16 @@ export default function FindCustomerById() {
         <div>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div>
-                        <label>customerId: </label>
-                        <input type="number" ref={customerIdRef} name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+                    <div className="form-group" className="col-lg-5 col-centered">
+                        <label >customerId: </label>
+                        <input type="number" ref={customerIdRef} className="form-control" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+                    
+                    <button className={"btn btn-primary " + commonStyle1.buttoncolor } >Check</button>
                     </div>
-                    <button>Check</button>
                 </form>
                 
                 {currentState.validations.customerId ? (
-                <div>
+                <div className="text-danger">
                     {currentState.validations.customerId}
                 </div>
             ) : ''}
@@ -62,7 +64,7 @@ export default function FindCustomerById() {
             </div>
 
             {currentState.customer ? (
-                <div>
+                <div className="text-success">
                     <h2>Customer Found:</h2>
                     {currentState.customer.customername}
                 </div>
@@ -70,7 +72,7 @@ export default function FindCustomerById() {
 
 
             {currentState.errorMessage ? (
-                <div style={{ color: 'red' }}>
+                <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
             ) : ''}
