@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import validationMessage from "../validationMessage";
 
-export default function UpdataBalance() {
+export default function UpdateBalance() {
 
     let initialState = {
-        customerId: undefined, newBalance: undefined,
+        customer: undefined, customerId: undefined, newBalance: undefined,
         errorMessage: undefined, validations: { customerId: undefined, newBalance: undefined }
     };
 
@@ -26,7 +26,7 @@ export default function UpdataBalance() {
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
         let newState = {
-            ...currentState, [fieldName]: fieldVal,
+            ...currentState, [fieldName]: fieldVal, customer: undefined,
             errorMessage: undefined, validations: validationState
         };
         setNewState(newState);
@@ -60,8 +60,13 @@ export default function UpdataBalance() {
                     </div>
                 ) : ''}
 
+                {currentState.errorMessage ? (
+                    <div style={{ color: 'red' }}>
+                        Error Occurred: {currentState.errorMessage}
+                    </div>
+                ) : ''}
 
-                
+
             </div>
         </div>
     );
