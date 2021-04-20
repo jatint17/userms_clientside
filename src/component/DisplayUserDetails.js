@@ -1,8 +1,8 @@
 export default function DisplayUserDetails({user}){
-    let {id, username, role}=user;
+    let {userId, username, role}=user;
     return(
         <div>
-            id: {id}
+            ID: {userId}
             <br/>
             username: {username}
             <br/>
