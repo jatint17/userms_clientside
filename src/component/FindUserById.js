@@ -45,21 +45,22 @@ export default function FindUserById() {
 
     return (
         <div>
+            <h3>Find User Details by Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div className="form-group" className="col-lg-5 col-centered">
+                    <div className="form-group">
                         <label>UserId: </label>
-                        <input type="number" ref={userIdRef} className="form-control" name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
-                   
-                    <button className={"btn btn-primary "+ commonStyle1.buttoncolor  }>Check</button>
+                        <input type="number" ref={userIdRef} className="form-control col-md-4" name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
+
+                        <button className={"btn btn-primary " + commonStyle1.buttoncolor}>Check</button>
                     </div>
                 </form>
-                
+
                 {currentState.validations.userId ? (
-                <div className="text-danger">
-                    {currentState.validations.userId}
-                </div>
-            ) : ''}
+                    <div className="text-danger">
+                        {currentState.validations.userId}
+                    </div>
+                ) : ''}
 
             </div>
 

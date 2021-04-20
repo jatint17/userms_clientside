@@ -45,21 +45,22 @@ export default function FindCustomerById() {
 
     return (
         <div>
+            <h3>Find Customer Details By Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div className="form-group" className="col-lg-5 col-centered">
+                    <div className="form-group">
                         <label >customerId: </label>
-                        <input type="number" ref={customerIdRef} className="form-control" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
-                    
-                    <button className={"btn btn-primary " + commonStyle1.buttoncolor } >Check</button>
+                        <input type="number" ref={customerIdRef} className="form-control col-md-4" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+
+                        <button className={"btn btn-primary " + commonStyle1.buttoncolor} >Check</button>
                     </div>
                 </form>
-                
+
                 {currentState.validations.customerId ? (
-                <div className="text-danger">
-                    {currentState.validations.customerId}
-                </div>
-            ) : ''}
+                    <div className="text-danger">
+                        {currentState.validations.customerId}
+                    </div>
+                ) : ''}
 
             </div>
 

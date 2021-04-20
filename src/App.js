@@ -22,8 +22,7 @@ function App() {
 
                     <div className="col-md-9">
 
-                        <FindUserById/>
-
+                        {/* <FindCustomerById/> */}
                         <AddCustomer/>
 
                     </div>
