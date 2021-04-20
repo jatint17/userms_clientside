@@ -60,6 +60,12 @@ export default function UpdateBalance() {
                     </div>
                 ) : ''}
 
+                {currentState.customer ? (
+                    <div>
+                        {currentState.customer.customerId}
+                    </div>
+                ) : ''}
+
                 {currentState.errorMessage ? (
                     <div style={{ color: 'red' }}>
                         Error Occurred: {currentState.errorMessage}
