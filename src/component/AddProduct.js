@@ -3,7 +3,7 @@ import validationConstants from "../validationConstants";
 import DisplayProductDetails from "./DisplayProductDetails";
 import commonStyle1 from "../commonStyle1.module.css";
 
-export default function AddCustomer() {
+export default function AddProduct() {
     const productNameRef = React.createRef();
     const priceRef = React.createRef();
 
