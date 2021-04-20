@@ -4,7 +4,7 @@ import validationConstants from "../validationConstants";
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  let mockAdmin = {id: 1, username:"appu", password:"123456", role: "Admin"};
+  let mockAdmin = {userId: 1, username:"appu", password:"123456", role: "Admin"};
   const initialState = {
     username: undefined,
     password: undefined,
@@ -32,6 +32,7 @@ export default function AddAdmin() {
       ...currentState,
       [fieldName]: fieldValue,
       errorMsg: undefined,
+      admin: undefined,
       validations: newValidationObj,
     });
   };
@@ -113,7 +114,7 @@ export default function AddAdmin() {
 
       {currentState.errorMsg ? (
         <div className="text-danger">
-          Request processing not successful
+          Sorry, your request could not be processed
           <br />
           {currentState.errorMsg}
         </div>

@@ -9,8 +9,7 @@ import DisplayProductDetails from './component/DisplayProductDetails';
 import DisplayUserDetails from './component/DisplayUserDetails';
 import FindCustomerById from './component/FindCustomerById';
 import FindUserById from'./component/FindUserById'
-
-
+import UpdatePrice from './component/UpdatePrice';
 
 function App() {
 
@@ -22,7 +21,11 @@ function App() {
                 <div className="row">
 
                     <div className="col-md-9">
+
                         <FindUserById/>
+
+                        <AddCustomer/>
+
                     </div>
                 </div>
             </div>
