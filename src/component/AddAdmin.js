@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import DisplayAdminDetails from "./DisplayAdminDetails";
+import DisplayUserDetails from "./DisplayUserDetails";
 import validationConstants from "../validationConstants";
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  // let mockAdmin = {id: 1, username:"appu", password:"123456", role: "Admin"};
+  let mockAdmin = {id: 1, username:"appu", password:"123456", role: "Admin"};
   const initialState = {
     username: undefined,
     password: undefined,
-    admin: undefined,
+    admin: mockAdmin,
     errorMsg: undefined,
     validations: { username: undefined, password: undefined },
   };
@@ -32,7 +32,6 @@ export default function AddAdmin() {
       ...currentState,
       [fieldName]: fieldValue,
       errorMsg: undefined,
-      admin: undefined,
       validations: newValidationObj,
     });
   };
@@ -58,7 +57,7 @@ export default function AddAdmin() {
 
   return (
     <div>
-      <h1>Add Admin</h1>
+      <h3>Enter new admin details</h3>
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label>
@@ -105,8 +104,8 @@ export default function AddAdmin() {
       </form>
       {currentState.admin ? (
         <div>
-          <h3>Admin added</h3>
-          <DisplayAdminDetails admin={currentState.admin} />
+          <h4>Admin added</h4>
+          <DisplayUserDetails user={currentState.admin} />
         </div>
       ) : (
         ""

@@ -1,5 +1,5 @@
-export default function DisplayAdminDetails({admin}){
-    let {id, username, role}=admin;
+export default function DisplayUserDetails({user}){
+    let {id, username, role}=user;
     return(
         <div>
             id: {id}
