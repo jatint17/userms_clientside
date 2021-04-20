@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 
-export default function FindById() {
+export default function FindUserById() {
 
     //let mockUser = { userId: "user", errorMessage: undefined };
 
