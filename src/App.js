@@ -1,16 +1,15 @@
 import './App.css';
 import FindById from './component/FindById';
-import UpdataBalance from './component/UpdataBalance';
+import UpdateBalance from './component/UpdateBalance';
 
 
 function App() {
 
 
-
   return (
     <div>
-      <FindById />
-      <UpdataBalance />
+      {/* <FindById /> */}
+      <UpdateBalance />
     </div>
   );
 }
