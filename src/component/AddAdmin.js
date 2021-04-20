@@ -32,6 +32,7 @@ export default function AddAdmin() {
       ...currentState,
       [fieldName]: fieldValue,
       errorMsg: undefined,
+      admin: undefined,
       validations: newValidationObj,
     });
   };
@@ -113,7 +114,7 @@ export default function AddAdmin() {
 
       {currentState.errorMsg ? (
         <div className="text-danger">
-          Request processing not successful
+          Sorry, your request could not be processed
           <br />
           {currentState.errorMsg}
         </div>

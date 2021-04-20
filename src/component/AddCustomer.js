@@ -1,10 +1,11 @@
 import React,{useState} from "react";
+import validationConstants from "../validationConstants";
 import DisplayUserDetails from "./DisplayUserDetails";
 export default function AddCustomer(){
     const usernameRef = React.createRef();
     const passwordRef = React.createRef();
-    let mockCustomer = {id: 1, username:"appu", password:"123456", role: "Customer"};
-    const initialState = {username: undefined, password: undefined, errorMsg:undefined, customer: undefined};
+    //let mockCustomer = {id: 1, username:"appu", password:"123456", role: "Customer"};
+    const initialState = {username: undefined, password: undefined, errorMsg:undefined, customer: undefined, validation:{username:undefined, password: undefined}};
     const [currentState, setNewState] = useState(initialState);
 
     const submitHandler = (event)=>{
@@ -14,7 +15,28 @@ export default function AddCustomer(){
     const setFieldState = (reference)=>{
        const fieldName = reference.current.name;
        const fieldValue = reference.current.value;
-        setNewState({...currentState, [fieldName] : fieldValue});
+       let validationMsg;
+       if(reference === usernameRef){
+           validationMsg=validateUsername(fieldValue);
+       }
+       if(reference === passwordRef){
+        validationMsg=validatePassword(fieldValue);
+        }
+       setNewState({...currentState, [fieldName] : fieldValue, errorMsg: undefined, customer: undefined, validation:{...currentState.validation,[fieldName]:validationMsg}});
+    }
+
+    const validateUsername = (username)=>{
+        if(username.length<5){
+            return validationConstants.usernameShorterThanFive;
+        }
+        return undefined;
+    }
+
+    const validatePassword = (password)=>{
+        if(password.length<8){
+            return validationConstants.passwordShorterThanEight;
+        }
+        return undefined;
     }
 
     return(
@@ -26,6 +48,16 @@ export default function AddCustomer(){
                     <label><b>Enter username</b></label>
                     <input name = "username" ref = {usernameRef} placeHolder="(min 5 characters)" className = "form-control" onChange={()=>setFieldState(usernameRef)} required/>
                 </div>
+
+                {currentState.validation?(
+                    <div className="text-danger">
+                        {currentState.validation.username}
+                        <br/>
+                        {currentState.validation.password}
+                    </div>
+                ):""
+
+                }
 
                 <div className="form-group">
                     <label><b>Enter password</b></label>
