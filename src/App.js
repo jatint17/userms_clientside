@@ -1,5 +1,5 @@
 import './App.css';
-import UpdateBalance from './component/UpdateBalance';
+
 
 
 function App() {
@@ -7,7 +7,6 @@ function App() {
 
   return (
     <div>
-      <UpdateBalance />
     </div>
   );
 }
