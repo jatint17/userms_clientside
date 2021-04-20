@@ -5,8 +5,7 @@ import commonStyle2 from "./commonStyle2.module.css";
 import AddAdmin from './component/AddAdmin'
 import FindProductById from './component/FindProductById';
 import AddCustomer from './component/AddCustomer';
-
-
+import UpdatePrice from './component/UpdatePrice';
 
 function App() {
 
