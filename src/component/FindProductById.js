@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import DisplayProductDetails from './DisplayProductDetails';
+import commonStyle1 from "../commonStyle1.module.css";
 
 export default function FindProductById() {
 
@@ -47,15 +48,16 @@ export default function FindProductById() {
         <div>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div>
+                    <div className="form-group" className="col-lg-5 col-centered">
                         <label>Enter productId: </label>
-                        <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+                        <input type="number" ref={productIdRef} className="form-control" name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+                   
+                    <button className={"btn btn-primary " + commonStyle1.buttoncolor }>Check</button>
                     </div>
-                    <button>Check</button>
                 </form>
                 
                 {currentState.validations.productId ? (
-                <div>
+                <div className="text-danger">
                     {currentState.validations.productId}
                 </div>
             ) : ''}
@@ -63,7 +65,7 @@ export default function FindProductById() {
             </div>
 
             {currentState.product ? (
-                <div>
+                <div className="text-success">
                     <h2>Product Found:</h2>
                     <DisplayProductDetails product={currentState.product}/>
                 </div>
@@ -71,7 +73,7 @@ export default function FindProductById() {
 
 
             {currentState.errorMessage ? (
-                <div style={{ color: 'red' }}>
+                <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
             ) : ''}
