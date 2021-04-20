@@ -9,7 +9,7 @@ export default function FindProductById() {
 
     let productIdRef = React.createRef();
 
-    let initialState = { productId: undefined, product: undefined, errorMessage: "errr", validations: { productId: undefined } };
+    let initialState = { productId: undefined, product: undefined, errorMessage: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
     let submitHandler = (event) => {
@@ -46,28 +46,29 @@ export default function FindProductById() {
 
     return (
         <div>
+            <h3>Find Product Details By Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div className="form-group" className="col-lg-5 col-centered">
+                    <div className="form-group">
                         <label>Enter productId: </label>
-                        <input type="number" ref={productIdRef} className="form-control" name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
-                   
-                    <button className={"btn btn-primary " + commonStyle1.buttoncolor }>Check</button>
+                        <input type="number" ref={productIdRef} className="form-control col-md-4" name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+
+                        <button className={"btn btn-primary " + commonStyle1.buttoncolor}>Check</button>
                     </div>
                 </form>
-                
+
                 {currentState.validations.productId ? (
-                <div className="text-danger">
-                    {currentState.validations.productId}
-                </div>
-            ) : ''}
+                    <div className="text-danger">
+                        {currentState.validations.productId}
+                    </div>
+                ) : ''}
 
             </div>
 
             {currentState.product ? (
                 <div className="text-success">
                     <h2>Product Found:</h2>
-                    <DisplayProductDetails product={currentState.product}/>
+                    <DisplayProductDetails product={currentState.product} />
                 </div>
             ) : ''}
 
