@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import validationMessage from "../validationMessage";
 import DisplayProductDetails from "./DisplayProductDetails";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function UpdatePrice() {
 
@@ -46,13 +48,13 @@ export default function UpdatePrice() {
         <div>
             <div>
                 <form>
-                    <div>
+                    <div className="form-group">
                         <label>productId: </label>
-                        <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+                        <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} className="form-control" />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>New Price: </label>
-                        <input type="number" ref={newPriceRef} name="newPrice" onChange={() => setFieldVal(newPriceRef)} /><br />
+                        <input type="number" ref={newPriceRef} name="newPrice" onChange={() => setFieldVal(newPriceRef)} className="form-control" />
                     </div>
                     <button>Update Price</button>
                 </form>

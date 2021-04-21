@@ -1,6 +1,9 @@
 import React,{useState} from "react";
 import validationConstants from "../validationConstants";
 import DisplayUserDetails from "./DisplayUserDetails";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
+
 export default function AddCustomer(){
     const usernameRef = React.createRef();
     const passwordRef = React.createRef();

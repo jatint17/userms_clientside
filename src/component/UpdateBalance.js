@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import validationMessage from "../validationMessage";
+import DisplayUserDetails from "./DisplayUserDetails";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function UpdateBalance() {
 
+    let mockCustomer = {customerId:20, name:"Customer"};
+
     let initialState = {
-        customer: undefined, customerId: undefined, newBalance: undefined,
-        errorMessage: undefined, validations: { customerId: undefined, newBalance: undefined }
-    };
+        customerId: undefined, newBalance: undefined,
+        validations: { customerId: undefined, newBalance: undefined }};
+
+    const response = {customer: mockCustomer, errorMesssage: undefined};
 
     let [currentState, setNewState] = useState(initialState);
 
@@ -25,10 +31,7 @@ export default function UpdateBalance() {
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = {
-            ...currentState, [fieldName]: fieldVal, customer: undefined,
-            errorMessage: undefined, validations: validationState
-        };
+        let newState = { ...currentState, [fieldName]: fieldVal, validations: validationState};
         setNewState(newState);
     }
 
@@ -39,36 +42,43 @@ export default function UpdateBalance() {
         return undefined;
     }
 
+    const convert = (customer) => {
+        let user = {userId: customer.customerId};
+        return user;
+    }
+
     return (
-        <div>
+        <div className={commonStyle1.margintop30}>
+            <h3>Update Customer Balance</h3>
             <div>
                 <form>
-                    <div>
+                    <div className="form-group">
                         <label>CustomerId: </label>
-                        <input type="number" ref={customerIdRef} name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+                        <input type="number" ref={customerIdRef} name="customerId" onChange={() => setFieldVal(customerIdRef)} className="form-control"/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>New Balance: </label>
-                        <input type="number" ref={newBalanceRef} name="newBalance" onChange={() => setFieldVal(newBalanceRef)} /><br />
+                        <input type="number" ref={newBalanceRef} name="newBalance" onChange={() => setFieldVal(newBalanceRef)} className="form-control"/>
                     </div>
-                    <button>Update Balance</button>
+                    <button className="btn btn-primary">Update Balance</button>
                 </form>
 
                 {currentState.validations ? (
-                    <div>
+                    <div className="text-danger">
                         {currentState.validations.customerId}
                     </div>
                 ) : ''}
 
-                {currentState.customer ? (
-                    <div>
-                        {currentState.customer.customerId}
+                {response.customer ? (
+                    <div className={commonStyle1.margintop30}>
+                        <h2>Customer Details: </h2>
+                        <DisplayUserDetails user={convert(response.customer)} />
                     </div>
                 ) : ''}
 
-                {currentState.errorMessage ? (
-                    <div style={{ color: 'red' }}>
-                        Error Occurred: {currentState.errorMessage}
+                {response.errorMessage ? (
+                    <div className="text-danger">
+                        Error Occurred: {response.errorMessage}
                     </div>
                 ) : ''}
 

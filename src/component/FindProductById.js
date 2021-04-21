@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import DisplayProductDetails from './DisplayProductDetails';
-import commonStyle1 from "../commonStyle1.module.css";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function FindProductById() {
 
@@ -9,8 +10,10 @@ export default function FindProductById() {
 
     let productIdRef = React.createRef();
 
-    let initialState = { productId: undefined, product: undefined, errorMessage: undefined, validations: { productId: undefined } };
+    let initialState = { productId: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+
+    const response = { product: undefined, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -65,7 +68,7 @@ export default function FindProductById() {
 
             </div>
 
-            {currentState.product ? (
+            {response.product ? (
                 <div className="text-success">
                     <h2>Product Found:</h2>
                     <DisplayProductDetails product={currentState.product} />
@@ -73,7 +76,7 @@ export default function FindProductById() {
             ) : ''}
 
 
-            {currentState.errorMessage ? (
+            {response.errorMessage ? (
                 <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
