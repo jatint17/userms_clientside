@@ -5,12 +5,12 @@ import { addAdmin } from "../service/UserService";
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  let mockAdmin = {
+  /*let mockAdmin = {
     id: 1,
     username: "appu",
     password: "123456",
     role: "Admin",
-  };
+  };*/
   const initialState = {
     username: undefined,
     password: undefined,
