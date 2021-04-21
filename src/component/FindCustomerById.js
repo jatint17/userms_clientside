@@ -8,8 +8,9 @@ export default function FindCustomerById() {
 
     let customerIdRef = React.createRef();
 
-    let initialState = { customerId: undefined, customer: undefined, errorMessage: undefined, validations: { customerId: undefined } };
+    let initialState = { customerId: undefined, validations: { customerId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+    const response={customer: undefined, errorMessage: undefined};
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -56,7 +57,7 @@ export default function FindCustomerById() {
                     </div>
                 </form>
 
-                {currentState.validations.customerId ? (
+                {response.validations.customerId ? (
                     <div className="text-danger">
                         {currentState.validations.customerId}
                     </div>
@@ -64,7 +65,7 @@ export default function FindCustomerById() {
 
             </div>
 
-            {currentState.customer ? (
+            {response.customer ? (
                 <div className="text-success">
                     <h2>Customer Found:</h2>
                     {currentState.customer.customername}
@@ -72,7 +73,7 @@ export default function FindCustomerById() {
             ) : ''}
 
 
-            {currentState.errorMessage ? (
+            {response.errorMessage ? (
                 <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
