@@ -4,11 +4,10 @@ import validationConstants from "../validationConstants";
 //import { addAdmin } from "../service/UserService";
 import commonStyle1 from "./css/commonStyle1.module.css";
 
-
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
- /* let mockAdmin = {
+  /* let mockAdmin = {
     userId: 1,
     username: "appu",
     password: "123456",
@@ -19,7 +18,7 @@ export default function AddAdmin() {
     password: undefined,
     validations: { username: undefined, password: undefined },
   };
-  const response={admin: undefined, errorMsg: undefined};
+  const response = { admin: undefined, errorMsg: undefined };
   const [currentState, setNewState] = useState(initialState);
 
   const setFieldState = (reference) => {
@@ -59,8 +58,8 @@ export default function AddAdmin() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if(currentState.validations){
-        return;
+    if (currentState.validations) {
+      return;
     }
   };
 
@@ -112,7 +111,7 @@ export default function AddAdmin() {
         <button className="btn btn-primary"> Create admin</button>
       </form>
       {response.admin ? (
-        <div className={commonStyle1.margintop30} >
+        <div className={commonStyle1.margintop30}>
           <h4 className="text-success">Admin added</h4>
           <DisplayUserDetails user={response.admin} />
         </div>
