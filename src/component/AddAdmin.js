@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import DisplayUserDetails from "./DisplayUserDetails";
 import validationConstants from "../validationConstants";
+import { addAdmin } from "../service/UserService";
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  let mockAdmin = {id: 1, username:"appu", password:"123456", role: "Admin"};
+  let mockAdmin = {
+    id: 1,
+    username: "appu",
+    password: "123456",
+    role: "Admin",
+  };
   const initialState = {
     username: undefined,
     password: undefined,
-    admin: mockAdmin,
+    admin: undefined,
     errorMsg: undefined,
     validations: { username: undefined, password: undefined },
   };
@@ -53,7 +59,10 @@ export default function AddAdmin() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("Inside Submit handler");
+    let data = {...currentState};
+    const promise = addAdmin(data);
+    promise.then(response=>setNewState({...currentState,admin:response.data})).
+            catch(error=>setNewState({...currentState, errorMsg:error.response.data}));
   };
 
   return (

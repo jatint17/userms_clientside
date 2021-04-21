@@ -18,7 +18,7 @@ function App() {
                 <div className="row">
 
                     <div className="col-md-9">
-                        <AddCustomer/>
+                        <AddAdmin/>
                     </div>
                 </div>
             </div>
