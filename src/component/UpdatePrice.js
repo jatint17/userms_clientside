@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import validationMessage from "../validationMessage";
 import DisplayProductDetails from "./DisplayProductDetails";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function UpdatePrice() {
 
@@ -43,18 +45,19 @@ export default function UpdatePrice() {
     }
 
     return (
-        <div>
+        <div className={commonStyle1.margintop30}>
+            <h3>Update Product Price</h3>
             <div>
                 <form>
-                    <div>
+                    <div className="form-group">
                         <label>productId: </label>
-                        <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+                        <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} className="form-control" />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>New Price: </label>
-                        <input type="number" ref={newPriceRef} name="newPrice" onChange={() => setFieldVal(newPriceRef)} /><br />
+                        <input type="number" ref={newPriceRef} name="newPrice" onChange={() => setFieldVal(newPriceRef)} className="form-control" />
                     </div>
-                    <button>Update Price</button>
+                    <button className="btn btn-primary">Update Price</button>
                 </form>
 
                 {currentState.validations ? (
@@ -64,7 +67,8 @@ export default function UpdatePrice() {
                 ) : ''}
 
                 {currentState.product ? (
-                    <div>
+                    <div className={commonStyle1.margintop30}>
+                        <h3>Product Details: </h3>
                         <DisplayProductDetails product={currentState.product} />
                     </div>
                 ) : ''}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function FindUserById() {
 
@@ -44,25 +46,27 @@ export default function FindUserById() {
 
     return (
         <div>
+            <h3>Find User Details by Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div>
+                    <div className="form-group">
                         <label>UserId: </label>
-                        <input type="number" ref={userIdRef} name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
+                        <input type="number" ref={userIdRef} className="form-control col-md-4" name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
+
+                        <button className={"btn btn-primary " + commonStyle1.buttoncolor}>Check</button>
                     </div>
-                    <button>Check</button>
                 </form>
-                
+
                 {currentState.validations.userId ? (
-                <div>
-                    {currentState.validations.userId}
-                </div>
-            ) : ''}
+                    <div className="text-danger">
+                        {currentState.validations.userId}
+                    </div>
+                ) : ''}
 
             </div>
 
             {currentState.user ? (
-                <div>
+                <div className="text-success">
                     <h2>User Found:</h2>
                     {currentState.user.username}
                 </div>
@@ -70,7 +74,7 @@ export default function FindUserById() {
 
 
             {currentState.errorMessage ? (
-                <div style={{ color: 'red' }}>
+                <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
             ) : ''}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import DisplayProductDetails from './DisplayProductDetails';
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function FindProductById() {
 
@@ -8,8 +10,10 @@ export default function FindProductById() {
 
     let productIdRef = React.createRef();
 
-    let initialState = { productId: undefined, product: undefined, errorMessage: "errr", validations: { productId: undefined } };
+    let initialState = { productId: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+
+    const response = { product: undefined, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -45,33 +49,35 @@ export default function FindProductById() {
 
     return (
         <div>
+            <h3>Find Product Details By Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div>
+                    <div className="form-group">
                         <label>Enter productId: </label>
-                        <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+                        <input type="number" ref={productIdRef} className="form-control col-md-4" name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+
+                        <button className={"btn btn-primary " + commonStyle1.buttoncolor}>Check</button>
                     </div>
-                    <button>Check</button>
                 </form>
-                
+
                 {currentState.validations.productId ? (
-                <div>
-                    {currentState.validations.productId}
-                </div>
-            ) : ''}
+                    <div className="text-danger">
+                        {currentState.validations.productId}
+                    </div>
+                ) : ''}
 
             </div>
 
-            {currentState.product ? (
-                <div>
+            {response.product ? (
+                <div className="text-success">
                     <h2>Product Found:</h2>
-                    <DisplayProductDetails product={currentState.product}/>
+                    <DisplayProductDetails product={currentState.product} />
                 </div>
             ) : ''}
 
 
-            {currentState.errorMessage ? (
-                <div style={{ color: 'red' }}>
+            {response.errorMessage ? (
+                <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
             ) : ''}

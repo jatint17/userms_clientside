@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
+import commonStyle1 from "./css/commonStyle1.module.css";
+import DisplayUserDetails from './DisplayUserDetails';
 
 export default function FindCustomerById() {
 
-    //let mockCustomer = { customerId: 111, errorMessage: undefined };
+    let mockCustomer = { customerId: 111, errorMessage: undefined };
 
     let customerIdRef = React.createRef();
 
-    let initialState = { customerId: undefined, customer: undefined, errorMessage: undefined, validations: { customerId: undefined } };
+    let initialState = { customerId: undefined, validations: { customerId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+
+    let response = { customer: mockCustomer, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -41,36 +45,43 @@ export default function FindCustomerById() {
         return undefined;
     }
 
+    const convert = (customer) => {
+        let user = {userId: customer.customerId};
+        return user;
+    }
+
 
     return (
         <div>
+            <h3>Find Customer Details By Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
-                    <div>
-                        <label>customerId: </label>
-                        <input type="number" ref={customerIdRef} name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+                    <div className="form-group">
+                        <label >customerId: </label>
+                        <input type="number" ref={customerIdRef} className="form-control col-md-4" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+
+                        <button className="btn btn-primary">Check</button>
                     </div>
-                    <button>Check</button>
                 </form>
-                
+
                 {currentState.validations.customerId ? (
-                <div>
-                    {currentState.validations.customerId}
-                </div>
-            ) : ''}
+                    <div className="text-danger">
+                        {currentState.validations.customerId}
+                    </div>
+                ) : ''}
 
             </div>
 
-            {currentState.customer ? (
-                <div>
-                    <h2>Customer Found:</h2>
-                    {currentState.customer.customername}
+            {response.customer ? (
+                <div className="text-success">
+                    <h3>Customer Found:</h3>
+                    <DisplayUserDetails user={convert(response.customer)} />
                 </div>
             ) : ''}
 
 
-            {currentState.errorMessage ? (
-                <div style={{ color: 'red' }}>
+            {response.errorMessage ? (
+                <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
             ) : ''}
