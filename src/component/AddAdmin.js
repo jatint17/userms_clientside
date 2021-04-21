@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import DisplayUserDetails from "./DisplayUserDetails";
 import validationConstants from "../validationConstants";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
+
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();

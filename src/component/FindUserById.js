@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
-import commonStyle1 from "../commonStyle1.module.css";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function FindUserById() {
 
