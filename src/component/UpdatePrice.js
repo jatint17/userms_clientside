@@ -57,7 +57,7 @@ export default function UpdatePrice() {
                         <label>New Price: </label>
                         <input type="number" ref={newPriceRef} name="newPrice" onChange={() => setFieldVal(newPriceRef)} className="form-control" />
                     </div>
-                    <button>Update Price</button>
+                    <button className="btn btn-primary">Update Price</button>
                 </form>
 
                 {currentState.validations ? (
@@ -67,7 +67,8 @@ export default function UpdatePrice() {
                 ) : ''}
 
                 {currentState.product ? (
-                    <div>
+                    <div className={commonStyle1.margintop30}>
+                        <h3>Product Details: </h3>
                         <DisplayProductDetails product={currentState.product} />
                     </div>
                 ) : ''}
