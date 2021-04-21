@@ -11,8 +11,10 @@ import FindUserById from'./component/FindUserById'
 import UpdatePrice from './component/UpdatePrice';
 import UpdateBalance from './component/UpdateBalance';
 import commonStyle2 from './component/css/commonStyle2.module.css'
+import { addAdmin } from './service/UserService';
 
 function App() {
+
 
 
     return (
@@ -23,6 +25,7 @@ function App() {
 
                     <div className="col-md-9">
                         <AddAdmin/>
+                        <AddCustomer/>
                     </div>
                 </div>
             </div>

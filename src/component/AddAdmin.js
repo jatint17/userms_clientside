@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import DisplayUserDetails from "./DisplayUserDetails";
 import validationConstants from "../validationConstants";
-import { addAdmin } from "../service/UserService";
+//import { addAdmin } from "../service/UserService";
 import commonStyle1 from "./css/commonStyle1.module.css";
 
 
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  /*let mockAdmin = {
-    id: 1,
+ /* let mockAdmin = {
+    userId: 1,
     username: "appu",
     password: "123456",
-    role: "Admin",
+    role: "Customer",
   };*/
   const initialState = {
     username: undefined,
     password: undefined,
-    admin: undefined,
-    errorMsg: undefined,
     validations: { username: undefined, password: undefined },
   };
+  const response={admin: undefined, errorMsg: undefined};
   const [currentState, setNewState] = useState(initialState);
 
   const setFieldState = (reference) => {
@@ -40,8 +39,6 @@ export default function AddAdmin() {
     setNewState({
       ...currentState,
       [fieldName]: fieldValue,
-      errorMsg: undefined,
-      admin: undefined,
       validations: newValidationObj,
     });
   };
@@ -54,22 +51,21 @@ export default function AddAdmin() {
   };
 
   const validatePassword = (name) => {
-    if (name.length < 8) {
-      return validationConstants.passwordShorterThanEight;
+    if (name.length < 4) {
+      return validationConstants.passwordShorterThanFour;
     }
     return undefined;
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    let data = {...currentState};
-    const promise = addAdmin(data);
-    promise.then(response=>setNewState({...currentState,admin:response.data})).
-            catch(error=>setNewState({...currentState, errorMsg:error.response.data}));
+    if(currentState.validations){
+        return;
+    }
   };
 
   return (
-    <div>
+    <div className={commonStyle1.margintop30}>
       <h3>Enter new admin details</h3>
       <form onSubmit={submitHandler}>
         <div className="form-group">
@@ -79,7 +75,7 @@ export default function AddAdmin() {
           <input
             name="username"
             ref={usernameRef}
-            placeHolder="(min 5 characters)"
+            placeholder="(min 5 characters)"
             className="form-control"
             onChange={() => setFieldState(usernameRef)}
             required
@@ -100,7 +96,7 @@ export default function AddAdmin() {
             name="password"
             type="password"
             ref={passwordRef}
-            placeHolder="(min 8 characters)"
+            placeholder="(min 4 characters)"
             className="form-control"
             onChange={() => setFieldState(passwordRef)}
             required
@@ -113,22 +109,22 @@ export default function AddAdmin() {
           ""
         )}
 
-        <button className="btn btn-primary"> Create Admin</button>
+        <button className="btn btn-primary"> Create admin</button>
       </form>
-      {currentState.admin ? (
-        <div>
-          <h4>Admin added</h4>
-          <DisplayUserDetails user={currentState.admin} />
+      {response.admin ? (
+        <div className={commonStyle1.margintop30} >
+          <h4 className="text-success">Admin added</h4>
+          <DisplayUserDetails user={response.admin} />
         </div>
       ) : (
         ""
       )}
 
-      {currentState.errorMsg ? (
+      {response.errorMsg ? (
         <div className="text-danger">
           Sorry, your request could not be processed
           <br />
-          {currentState.errorMsg}
+          {response.errorMsg}
         </div>
       ) : (
         ""

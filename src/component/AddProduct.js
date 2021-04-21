@@ -7,11 +7,12 @@ export default function AddProduct() {
     const productNameRef = React.createRef();
     const priceRef = React.createRef();
 
-    let mockProduct = { productId: 111, productName: "Shoes", price: 1000 };
+    //let mockProduct = { productId: 111, productName: "Shoes", price: 1000 };
     const initialState = {
-        productName: undefined, price: undefined, errorMsg: undefined, product: mockProduct,
+        productName: undefined, price: undefined, 
         validations: { productName: undefined }
     };
+    const response={product: undefined, errorMsg: undefined};
     const [currentState, setNewState] = useState(initialState);
 
     const submitHandler = (event) => {
@@ -35,7 +36,7 @@ export default function AddProduct() {
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = { ...currentState, [fieldName]: fieldValue, customer: undefined, errorMessage: undefined, validations: validationState };
+        let newState = { ...currentState, [fieldName]: fieldValue, validations: validationState };
         setNewState(newState);
     }
 
@@ -54,19 +55,19 @@ export default function AddProduct() {
     }
 
     return (
-        <div>
+        <div className={commonStyle1.margintop30}>
             <form onSubmit={submitHandler}>
                 <h3>Enter new product details</h3>
 
                 <div className="form-group">
-                    <label><b>Enter productName</b></label>
-                    <input name="productName" ref={productNameRef} placeHolder="(min 2 characters)" className="form-control"
+                    <label><b>Enter product name</b></label>
+                    <input name="productName" ref={productNameRef} placeholder="(min 2 characters)" className="form-control"
                         onChange={() => setFieldState(productNameRef)} required />
                 </div>
 
                 <div className="form-group">
                     <label><b>Enter price</b></label>
-                    <input name="price" type="number" ref={priceRef} className="form-control"
+                    <input name="price" type="number" ref={priceRef} placeholder="(non-negative)" className="form-control"
                         onChange={() => setFieldState(priceRef)} required />
                 </div>
 
@@ -80,17 +81,18 @@ export default function AddProduct() {
                 ) : ""}
 
 
-                {currentState.product ? (
-                    <div>
-                        <DisplayProductDetails product={currentState.product} />
+                {response.product ? (
+                    <div className={commonStyle1.margintop30}>
+                        <h4>Product added</h4>
+                        <DisplayProductDetails product={response.product} />
                     </div>
                 ) : ''}
 
-                {currentState.errorMsg ? (
+                {response.errorMsg ? (
                     <div className="text-danger">
                         Sorry, your request could not be processed
                         <br />
-                        {currentState.errorMsg}
+                        {response.errorMsg}
                     </div>
                 ) : ''}
 
