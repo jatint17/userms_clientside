@@ -23,7 +23,7 @@ function App() {
 
                     <div className="col-md-9">
 
-                        <FindCustomerById/>
+                        <UpdatePrice/>
 
                     </div>
                 </div>

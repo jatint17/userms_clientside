@@ -45,7 +45,8 @@ export default function UpdatePrice() {
     }
 
     return (
-        <div>
+        <div className={commonStyle1.margintop30}>
+            <h3>Update Product Price</h3>
             <div>
                 <form>
                     <div className="form-group">
