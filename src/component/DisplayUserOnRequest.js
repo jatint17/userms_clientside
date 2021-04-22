@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import DisplayUserDetails from './DisplayUserDetails'
 import commonStyle1 from "./css/commonStyle1.module.css";
-import {getUserById} from "../service/UserService"
 
 
-export default function FindUserById() {
+
+export default function DisplayUserOnRequest() {
 
     //let mockUser = { userId: "user", errorMessage: undefined };
 
     let userIdRef = React.createRef();
 
-    let initialState = { userId: undefined, user: undefined, errorMessage: undefined, validations: { userId: undefined } };
+    let initialState = { userId: undefined,  validations: { userId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+
+    let response ={user: undefined, errorMessage: undefined};
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -68,17 +70,17 @@ export default function FindUserById() {
 
             </div>
 
-            {currentState.user ? (
+            {response.user ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
-                    <DisplayUserDetails user={currentState.user}/>
+                    <DisplayUserDetails user={response.user}/>
                 </div>
             ) : ''}
 
 
-            {currentState.errorMessage ? (
+            {response.errorMessage ? (
                 <div className="text-danger">
-                    {currentState.errorMessage}
+                    {response.errorMessage}
                 </div>
             ) : ''}
 

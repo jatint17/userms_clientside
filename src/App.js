@@ -3,11 +3,11 @@ import Login from './component/Login';
 import AddProduct from './component/AddProduct'
 import AddAdmin from './component/AddAdmin'
 import AddCustomer from './component/AddCustomer'
-import FindProductById from './component/FindProductById';
+import FindProductById from './component/DisplayProductOnRequest';
 import DisplayProductDetails from './component/DisplayProductDetails';
 import DisplayUserDetails from './component/DisplayUserDetails';
-import FindCustomerById from './component/FindCustomerById';
-import FindUserById from'./component/FindUserById'
+import FindCustomerById from './component/DisplayCustomerOnRequest';
+import FindUserById from'./component/DisplayUserOnRequest'
 import UpdatePrice from './component/UpdatePrice';
 import UpdateBalance from './component/UpdateBalance';
 import commonStyle2 from './component/css/commonStyle2.module.css'
@@ -15,6 +15,10 @@ import { addAdmin, checkCredentials, findByUsername, getUserById } from './servi
 import DisplayUserByUsername from './component/DisplayUserByUsername';
 import { getProductById } from './service/ProductService';
 import {getCustomerById} from './service/ProductService';
+import DisplayUserOnRequest from './component/DisplayUserOnRequest';
+import DisplayProductOnRequest from './component/DisplayProductOnRequest';
+import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
+
 
 function App() {
 
@@ -65,7 +69,7 @@ function App() {
                 <div className="row">
                  
                     <div className="col-md-9">
-                        <FindCustomerById/>
+                        <DisplayCustomerOnRequest/>
 
                     </div>
                 </div>

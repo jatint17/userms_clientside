@@ -32,10 +32,10 @@ function checkCredentials(username, password) {
     return promise;
 }
 
-function findByUsername(username) {
+function DisplayUserOnRequest(username) {
     const url = baseUrl + "/p/users/byusername/"+username;
     const promise = axios.get(url);
     return promise;
 }
 
-export {getUserById, checkCredentials, findByUsername, addAdmin};
+export {getUserById, checkCredentials, DisplayUserOnRequest, addAdmin};
