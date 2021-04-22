@@ -5,7 +5,7 @@ import commonStyle1 from "./css/commonStyle1.module.css";
 import {getUserById} from "../service/UserService"
 
 
-export default function FindUserById() {
+export default function DisplayUserOnRequest() {
 
     //let mockUser = { userId: "user", errorMessage: undefined };
 

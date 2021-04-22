@@ -4,16 +4,16 @@ import DisplayProductDetails from './DisplayProductDetails';
 import commonStyle1 from "./css/commonStyle1.module.css";
 
 
-export default function FindProductById() {
+export default function DisplayProductOnRequest() {
 
-    //let mockproduct = { productId: 111, productName: "hello", price:287};
+    let mockProduct = { productId: 111, productName: "hello", price:287};
 
     let productIdRef = React.createRef();
 
     let initialState = { productId: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    const response = { product: undefined, errorMessage: undefined };
+    const response = { product: mockProduct, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -21,6 +21,7 @@ export default function FindProductById() {
         if (currentState.validations.productId) {
             return;
         }
+        console.log(response.product);
     }
 
     let setFieldVal = (ref) => {
@@ -44,6 +45,7 @@ export default function FindProductById() {
             return validationMessage.idValidation;
         }
         return undefined;
+        
     }
 
 
@@ -71,14 +73,14 @@ export default function FindProductById() {
             {response.product ? (
                 <div className="text-success">
                     <h2>Product Found:</h2>
-                    <DisplayProductDetails product={currentState.product} />
+                    <DisplayProductDetails product={response.product} />
                 </div>
             ) : ''}
 
 
             {response.errorMessage ? (
                 <div className="text-danger">
-                    Error Occurred: {currentState.errorMessage}
+                    Error Occurred: {response.errorMessage}
                 </div>
             ) : ''}
 
