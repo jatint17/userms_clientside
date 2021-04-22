@@ -1,11 +1,8 @@
 import './App.css';
-import Login from './component/Login';
-import AddProduct from './component/AddProduct';
-import AddAdmin from './component/AddAdmin';
-import AddCustomer from './component/AddCustomer';
-import commonStyle2 from './component/css/commonStyle2.module.css';
+import commonStyle2 from './component/css/commonStyle2.module.css'
+import { addProduct } from './service/ProductService';
+import { addCustomer } from './service/CustomerService';
 import { addAdmin, checkCredentials, findByUsername, getUserById } from './service/UserService';
-import DisplayUserByUsername from './component/DisplayUserByUsername';
 import { updatePrice } from './service/ProductService';
 import { updateBalance } from './service/CustomerService';
 import DisplayProductOnRequest from './component/DisplayProductOnRequest';
@@ -13,6 +10,13 @@ import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
 import DisplayUserOnRequest from './component/DisplayUserOnRequest';
 
 function App() {
+
+
+    let data = { productName: "t-shirt", price: 1500.0 };
+    const promise = addProduct(data);
+    promise.then(response => console.log("inside success function:", response.data)).
+        catch(error => console.log("inside error function:", error.response.data));
+
 
     // const id=1;
     // const promise = getUserById(id);
@@ -62,12 +66,13 @@ function App() {
     //     .catch(error => console.log(error.message));
 
 
+
     return (
         <div className={commonStyle2.appbg}>
             <div className="container" style={{ marginTop: '50px' }}>
                 <div className="row">
                     <div className="col-md-9">
-                        <DisplayUserOnRequest />
+
                     </div>
                 </div>
             </div>
