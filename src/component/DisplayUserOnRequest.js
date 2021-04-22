@@ -11,8 +11,10 @@ export default function DisplayUserOnRequest() {
 
     let userIdRef = React.createRef();
 
-    let initialState = { userId: undefined, user: undefined, errorMessage: undefined, validations: { userId: undefined } };
+    let initialState = { userId: undefined, validations: { userId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+
+    let response = {user: undefined, errorMessage: undefined};
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -35,7 +37,7 @@ export default function DisplayUserOnRequest() {
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = { ...currentState, [fieldName]: fieldVal, customer: undefined, errorMessage: undefined, validations: validationState };
+        let newState = { ...currentState, [fieldName]: fieldVal, validations: validationState };
         setNewState(newState);
     }
 
@@ -68,7 +70,7 @@ export default function DisplayUserOnRequest() {
 
             </div>
 
-            {currentState.user ? (
+            {response.user ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
                     <DisplayUserDetails user={currentState.user}/>
@@ -76,7 +78,7 @@ export default function DisplayUserOnRequest() {
             ) : ''}
 
 
-            {currentState.errorMessage ? (
+            {response.errorMessage ? (
                 <div className="text-danger">
                     {currentState.errorMessage}
                 </div>
