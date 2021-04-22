@@ -11,11 +11,10 @@ import FindUserById from'./component/FindUserById'
 import UpdatePrice from './component/UpdatePrice';
 import UpdateBalance from './component/UpdateBalance';
 import commonStyle2 from './component/css/commonStyle2.module.css'
-import { checkCredentials, findByUsername, getUserById } from './service/UserService';
+import { addAdmin, checkCredentials, findByUsername, getUserById } from './service/UserService';
 import DisplayUserByUsername from './component/DisplayUserByUsername';
 
 function App() {
-
 
     const id=1;
     const promise = getUserById(id);
@@ -41,7 +40,6 @@ function App() {
     // .catch(error => console.log(error.message));
 
 
-
     return (
         <div className={commonStyle2.appbg}>
             <div className="container" style={{ marginTop: '50px' }}>
@@ -49,7 +47,6 @@ function App() {
                 <div className="row">
 
                     <div className="col-md-9">
-
 
                     </div>
                 </div>
