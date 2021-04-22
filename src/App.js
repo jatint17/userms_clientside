@@ -13,16 +13,18 @@ import UpdateBalance from './component/UpdateBalance';
 import commonStyle2 from './component/css/commonStyle2.module.css'
 import { addAdmin, checkCredentials, findByUsername, getUserById } from './service/UserService';
 import DisplayUserByUsername from './component/DisplayUserByUsername';
+import { getProductById } from './service/ProductService';
+import {getCustomerById} from './service/ProductService';
 
 function App() {
 
-    const id=1;
-    const promise = getUserById(id);
-    promise.then((response) => {
-        console.log("inside app.js promise.then");
-        console.log("the response getUserById is:", response.data);
-    })
-    .catch(error => console.log(error.message));
+    // const id=1;
+    // const promise = getUserById(id);
+    // promise.then((response) => {
+    //     console.log("inside app.js promise.then");
+    //     console.log("the response getUserById is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
     
     
     // const promise = checkCredentials("admin","admin");
@@ -37,7 +39,23 @@ function App() {
     //     console.log("inside app.js findByUsername promise.then");
     //     console.log("the response is:", response.data);
     // })
+   // .catch(error => console.log(error.message));
+
+    // const promise = getProductById(6);
+    // promise.then((response) => {
+    //     console.log("inside app.js getProductById promise.then");
+    //     console.log("the response is:", response.data);
+    // })
     // .catch(error => console.log(error.message));
+
+    // const promise = getCustomerById(7);
+    // promise.then((response) => {
+    //     console.log("inside app.js getProductById promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
+
+
 
 
     return (
@@ -45,8 +63,9 @@ function App() {
             <div className="container" style={{ marginTop: '50px' }}>
 
                 <div className="row">
-
+                 
                     <div className="col-md-9">
+                        <FindCustomerById/>
 
                     </div>
                 </div>

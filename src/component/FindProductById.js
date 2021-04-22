@@ -4,6 +4,7 @@ import DisplayProductDetails from './DisplayProductDetails';
 import commonStyle1 from "./css/commonStyle1.module.css";
 
 
+
 export default function FindProductById() {
 
     //let mockproduct = { productId: 111, productName: "hello", price:287};

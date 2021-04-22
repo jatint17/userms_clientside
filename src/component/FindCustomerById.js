@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import commonStyle1 from "./css/commonStyle1.module.css";
 import DisplayUserDetails from './DisplayUserDetails';
+import {getCustomerById} from "../service/UserService";
+
 
 export default function FindCustomerById() {
 
-    let mockCustomer = { customerId: 111, errorMessage: undefined };
+  //let mockCustomer = { customerId: "customer", errorMessage: undefined };
 
     let customerIdRef = React.createRef();
 
-    let initialState = { customerId: undefined, validations: { customerId: undefined } };
+    let initialState = { customerId: undefined, customer: undefined, errorMessage: undefined,validations: { customerId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    let response = { customer: mockCustomer, errorMessage: undefined };
+  //  let response = { customer: mockCustomer, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -72,15 +74,15 @@ export default function FindCustomerById() {
 
             </div>
 
-            {response.customer ? (
+            {currentState.customer ? (
                 <div className="text-success">
                     <h3>Customer Found:</h3>
-                    <DisplayUserDetails user={convert(response.customer)} />
+                    <DisplayUserDetails user={convert(currentState.customer)} />
                 </div>
             ) : ''}
 
 
-            {response.errorMessage ? (
+            {currentState.errorMessage ? (
                 <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
