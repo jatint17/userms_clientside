@@ -15,6 +15,7 @@ export default function DisplayProductOnRequest() {
 
     const response = { product: mockProduct, errorMessage: undefined };
 
+
     let submitHandler = (event) => {
         event.preventDefault();
 
@@ -22,6 +23,7 @@ export default function DisplayProductOnRequest() {
             return;
         }
         console.log(response.product);
+
     }
 
     let setFieldVal = (ref) => {
@@ -45,7 +47,6 @@ export default function DisplayProductOnRequest() {
             return validationMessage.idValidation;
         }
         return undefined;
-        
     }
 
 
@@ -74,6 +75,7 @@ export default function DisplayProductOnRequest() {
                 <div className="text-success">
                     <h2>Product Found:</h2>
                     <DisplayProductDetails product={response.product} />
+
                 </div>
             ) : ''}
 
