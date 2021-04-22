@@ -6,7 +6,6 @@ export default function DisplayUserDetails({user}){
             <br/>
             username: {username}
             <br/>
-            role: {role}
         </div>    
     );
 }
