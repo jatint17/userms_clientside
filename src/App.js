@@ -1,13 +1,14 @@
 import './App.css';
-
 import commonStyle2 from './component/css/commonStyle2.module.css'
 import {  addProduct } from './service/ProductService';
 import {  addAdmin } from './service/UserService';
 import {  addCustomer } from './service/CustomerService';
-import commonStyle2 from './component/css/commonStyle2.module.css'
 import { addAdmin, checkCredentials, findByUsername, getUserById } from './service/UserService';
 import { updatePrice } from './service/ProductService';
 import { updateBalance } from './service/CustomerService';
+import DisplayProductOnRequest from './component/DisplayProductOnRequest';
+import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
+import DisplayUserOnRequest from './component/DisplayUserOnRequest';
 
 function App() {
 
@@ -48,24 +49,31 @@ function App() {
     // })
     //     .catch(error => console.log(error.message));
 
-//     let data = { customerId: 12, newBalance: 1800 }
-//     const promise = updateBalance(data);
-//     promise.then((response) => {
-//         console.log("inside app.js updateBalance promise.then");
-//         console.log("the response is:", response.data);
-//     })
-//         .catch(error => console.log(error.message));
+    // let data = { customerId: 12, newBalance: 1800 }
+    // const promise = updateBalance(data);
+    // promise.then((response) => {
+    //     console.log("inside app.js updateBalance promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    //     .catch(error => console.log(error.message));
+
+
+    // let data = { username: "username69", password:"pass69haha" };
+    // const promise = addAdmin(data);
+    // promise.then((response) => {
+    //     console.log("inside app.js updateBalance promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    //     .catch(error => console.log(error.message));
 
 
 
     return (
         <div className={commonStyle2.appbg}>
             <div className="container" style={{ marginTop: '50px' }}>
-
                 <div className="row">
-
                     <div className="col-md-9">
-                      
+      
                     </div>
                 </div>
             </div>
