@@ -17,6 +17,9 @@ export default function AddCustomer() {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if (currentState.validation) {
+        return;
+      }
   };
 
   const setFieldState = (reference) => {

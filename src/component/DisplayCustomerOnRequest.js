@@ -3,7 +3,7 @@ import validationMessage from '../validationMessage';
 import commonStyle1 from "./css/commonStyle1.module.css";
 import DisplayUserDetails from './DisplayUserDetails';
 
-export default function FindCustomerById() {
+export default function DisplayCustomerOnRequest() {
 
     let mockCustomer = { customerId: 111, errorMessage: undefined };
 

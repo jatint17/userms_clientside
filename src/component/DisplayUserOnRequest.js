@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
-import DisplayProductDetails from './DisplayProductDetails';
 import commonStyle1 from "./css/commonStyle1.module.css";
 
 
-export default function FindProductById() {
+export default function DisplayUserOnRequest() {
 
-    //let mockproduct = { productId: 111, productName: "hello", price:287};
+    //let mockUser = { userId: "user", errorMessage: undefined };
 
-    let productIdRef = React.createRef();
+    let userIdRef = React.createRef();
 
-    let initialState = { productId: undefined, validations: { productId: undefined } };
+    let initialState = { userId: undefined, user: undefined, errorMessage: undefined, validations: { userId: undefined } };
     let [currentState, setNewState] = useState(initialState);
-
-    const response = { product: undefined, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();
 
-        if (currentState.validations.productId) {
+        if (currentState.validations.userId) {
             return;
         }
     }
@@ -29,18 +26,18 @@ export default function FindProductById() {
         let fieldVal = field.value;
 
         let validationMessage;
-        if (ref === productIdRef) {
+        if (ref === userIdRef) {
             validationMessage = validateId(fieldVal);
         }
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = { ...currentState, [fieldName]: fieldVal, product: undefined, errorMessage: undefined, validations: validationState };
+        let newState = { ...currentState, [fieldName]: fieldVal, customer: undefined, errorMessage: undefined, validations: validationState };
         setNewState(newState);
     }
 
-    let validateId = (productId) => {
-        if (productId < 0) {
+    let validateId = (userId) => {
+        if (userId < 0) {
             return validationMessage.idValidation;
         }
         return undefined;
@@ -49,34 +46,34 @@ export default function FindProductById() {
 
     return (
         <div>
-            <h3>Find Product Details By Id</h3>
+            <h3>Find User Details by Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label>Enter productId: </label>
-                        <input type="number" ref={productIdRef} className="form-control col-md-4" name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
+                        <label>UserId: </label>
+                        <input type="number" ref={userIdRef} className="form-control col-md-4" name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
 
                         <button className={"btn btn-primary " + commonStyle1.buttoncolor}>Check</button>
                     </div>
                 </form>
 
-                {currentState.validations.productId ? (
+                {currentState.validations.userId ? (
                     <div className="text-danger">
-                        {currentState.validations.productId}
+                        {currentState.validations.userId}
                     </div>
                 ) : ''}
 
             </div>
 
-            {response.product ? (
+            {currentState.user ? (
                 <div className="text-success">
-                    <h2>Product Found:</h2>
-                    <DisplayProductDetails product={currentState.product} />
+                    <h2>User Found:</h2>
+                    {currentState.user.username}
                 </div>
             ) : ''}
 
 
-            {response.errorMessage ? (
+            {currentState.errorMessage ? (
                 <div className="text-danger">
                     Error Occurred: {currentState.errorMessage}
                 </div>
