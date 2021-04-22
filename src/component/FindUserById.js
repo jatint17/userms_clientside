@@ -13,6 +13,7 @@ export default function FindUserById() {
 
     let initialState = { userId: undefined, user: undefined, errorMessage: undefined, validations: { userId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+    const response={user: undefined, errorMessage: undefined};
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -60,7 +61,7 @@ export default function FindUserById() {
                     </div>
                 </form>
 
-                {currentState.validations.userId ? (
+                {response.validations.userId ? (
                     <div className="text-danger">
                         {currentState.validations.userId}
                     </div>
@@ -68,7 +69,7 @@ export default function FindUserById() {
 
             </div>
 
-            {currentState.user ? (
+            {response.user ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
                     <DisplayUserDetails user={currentState.user}/>
@@ -76,7 +77,7 @@ export default function FindUserById() {
             ) : ''}
 
 
-            {currentState.errorMessage ? (
+            {response.errorMessage ? (
                 <div className="text-danger">
                     {currentState.errorMessage}
                 </div>

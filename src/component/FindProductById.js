@@ -12,6 +12,7 @@ export default function FindProductById() {
 
     let initialState = { productId: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+    const response={product:undefined,errorMessage:undefined};
 
     const response = { product: undefined, errorMessage: undefined };
 
@@ -60,7 +61,7 @@ export default function FindProductById() {
                     </div>
                 </form>
 
-                {currentState.validations.productId ? (
+                {response.validations.productId ? (
                     <div className="text-danger">
                         {currentState.validations.productId}
                     </div>

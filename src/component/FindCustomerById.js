@@ -11,6 +11,7 @@ export default function FindCustomerById() {
 
     let initialState = { customerId: undefined, validations: { customerId: undefined } };
     let [currentState, setNewState] = useState(initialState);
+    const response={customer: undefined, errorMessage: undefined};
 
     let response = { customer: mockCustomer, errorMessage: undefined };
 
@@ -64,7 +65,7 @@ export default function FindCustomerById() {
                     </div>
                 </form>
 
-                {currentState.validations.customerId ? (
+                {response.validations.customerId ? (
                     <div className="text-danger">
                         {currentState.validations.customerId}
                     </div>
