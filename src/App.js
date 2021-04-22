@@ -14,6 +14,7 @@ import commonStyle2 from './component/css/commonStyle2.module.css'
 import { addAdmin, checkCredentials, findByUsername, getUserById } from './service/UserService';
 import DisplayUserByUsername from './component/DisplayUserByUsername';
 import { updatePrice } from './service/ProductService';
+import { updateBalance } from './service/CustomerService';
 
 function App() {
 
@@ -39,10 +40,18 @@ function App() {
     // })
     // .catch(error => console.log(error.message));
 
-    let data = { productId: 5, newPrice: 1800 }
-    const promise = updatePrice(data);
+    // let data = { productId: 5, newPrice: 1800 }
+    // const promise = updatePrice(data);
+    // promise.then((response) => {
+    //     console.log("inside app.js updatePrice promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    //     .catch(error => console.log(error.message));
+
+    let data = { customerId: 12, newBalance: 1800 }
+    const promise = updateBalance(data);
     promise.then((response) => {
-        console.log("inside app.js findByUsername promise.then");
+        console.log("inside app.js updateBalance promise.then");
         console.log("the response is:", response.data);
     })
         .catch(error => console.log(error.message));
