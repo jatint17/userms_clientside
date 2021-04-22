@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const baseUrl = "http://localhost:8585"
 
 function addCustomer(data){
@@ -8,4 +9,14 @@ function addCustomer(data){
     const promise = axios.post(url, requestData);
     return promise;
 }
-export {addCustomer};
+
+
+function updateBalance(data){
+    const url = baseUrl+"/a/customers/updatebalance";
+    let requestData = {customerId: data.customerId, newBalance: data.newBalance};
+    const promise = axios.put(url, requestData);
+    return promise;
+}
+
+export {updateBalance, addCustomer};
+

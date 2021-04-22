@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const baseUrl = "http://localhost:8585"
 
 function addProduct(data){
@@ -8,4 +9,12 @@ function addProduct(data){
     const promise = axios.post(url, requestData);
     return promise;
 }
-export {addProduct};
+
+function updatePrice(data){
+    const url = baseUrl+"/a/products/updateprice";
+    let requestData = {productId: data.productId, newPrice: data.newPrice};
+    const promise = axios.put(url, requestData);
+    return promise;
+}
+
+export {updatePrice, addProduct};
