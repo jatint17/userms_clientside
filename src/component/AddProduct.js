@@ -18,6 +18,9 @@ export default function AddProduct() {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if (currentState.validations) {
+        return;
+      }
   };
 
   const setFieldState = (reference) => {
