@@ -11,7 +11,9 @@ import FindUserById from'./component/DisplayUserOnRequest'
 import UpdatePrice from './component/UpdatePrice';
 import UpdateBalance from './component/UpdateBalance';
 import commonStyle2 from './component/css/commonStyle2.module.css'
-import { addAdmin, addProduct, addCustomer } from './service/UserService';
+import {  addProduct } from './service/ProductService';
+import {  addAdmin } from './service/UserService';
+import {  addCustomer } from './service/CustomerService';
 
 function App() {
 
