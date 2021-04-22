@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import DisplayProductDetails from './DisplayProductDetails';
-import commonStyle1 from "../commonStyle1.module.css";
+import commonStyle1 from "./css/commonStyle1.module.css";
+
 
 export default function FindProductById() {
 
@@ -12,6 +13,8 @@ export default function FindProductById() {
     let initialState = { productId: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
     const response={product:undefined,errorMessage:undefined};
+
+    const response = { product: undefined, errorMessage: undefined };
 
     let submitHandler = (event) => {
         event.preventDefault();

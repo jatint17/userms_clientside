@@ -3,25 +3,27 @@ import validationMessage from '../validationMessage';
 import DisplayUserDetails from './DisplayUserDetails'
 import commonStyle1 from "./css/commonStyle1.module.css";
 import {getUserById} from "../service/UserService"
+import validationConstants from '../validationConstants';
 
 
-export default function FindUserById() {
+export default function DisplayUserByUsername() {
 
-    //let mockUser = { userId: "user", errorMessage: undefined };
+    let mockUser = { username: "admin", password: "admin"};
 
-    let userIdRef = React.createRef();
+    let usernameRef = React.createRef();
 
-    let initialState = { userId: undefined, user: undefined, errorMessage: undefined, validations: { userId: undefined } };
+    let initialState = { username: undefined, validations: { username: undefined } };
+    const response = { user: mockUser, errorMessage: undefined };
+
     let [currentState, setNewState] = useState(initialState);
-    const response={user: undefined, errorMessage: undefined};
 
     let submitHandler = (event) => {
         event.preventDefault();
 
-        if (currentState.validations.userId) {
+        if (currentState.validations.username) {
             return;
         }
-        console.log("inside submit handler");
+        console.log("inside submit handler", response.user);
     }
 
     let setFieldVal = (ref) => {
@@ -30,19 +32,19 @@ export default function FindUserById() {
         let fieldVal = field.value;
 
         let validationMessage;
-        if (ref === userIdRef) {
-            validationMessage = validateId(fieldVal);
+        if (ref === usernameRef) {
+            validationMessage = validateUsername(fieldVal);
         }
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = { ...currentState, [fieldName]: fieldVal, customer: undefined, errorMessage: undefined, validations: validationState };
+        let newState = { ...currentState, [fieldName]: fieldVal, validations: validationState };
         setNewState(newState);
     }
 
-    let validateId = (userId) => {
-        if (userId < 0) {
-            return validationMessage.idValidation;
+    let validateUsername = (username) => {
+        if (username.length < 2) {
+            return validationConstants.usernameShorterThanTwo;
         }
         return undefined;
     }
@@ -54,16 +56,16 @@ export default function FindUserById() {
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label>UserId: </label>
-                        <input type="number" ref={userIdRef} className="form-control col-md-4" name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
+                        <label>username: </label>
+                        <input type="text" ref={usernameRef} className="form-control col-md-4" name="username" onChange={() => setFieldVal(usernameRef)} /><br />
 
                         <button className="btn btn-primary">Check</button>
                     </div>
                 </form>
 
-                {response.validations.userId ? (
+                {currentState.validations.username ? (
                     <div className="text-danger">
-                        {currentState.validations.userId}
+                        {currentState.validations.username}
                     </div>
                 ) : ''}
 
@@ -72,14 +74,14 @@ export default function FindUserById() {
             {response.user ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
-                    <DisplayUserDetails user={currentState.user}/>
+                    <DisplayUserDetails user={response.user}/>
                 </div>
             ) : ''}
 
 
             {response.errorMessage ? (
                 <div className="text-danger">
-                    {currentState.errorMessage}
+                    {response.errorMessage}
                 </div>
             ) : ''}
 
