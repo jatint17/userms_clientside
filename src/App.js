@@ -1,5 +1,5 @@
 import './App.css';
-import Home from './component/Home';
+import Login from './component/Login';
 import AddProduct from './component/AddProduct'
 import AddAdmin from './component/AddAdmin'
 import AddCustomer from './component/AddCustomer'
