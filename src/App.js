@@ -11,21 +11,34 @@ import FindUserById from'./component/FindUserById'
 import UpdatePrice from './component/UpdatePrice';
 import UpdateBalance from './component/UpdateBalance';
 import commonStyle2 from './component/css/commonStyle2.module.css'
-import { checkCredentials, getUserById } from './service/UserService';
+import { checkCredentials, findByUsername, getUserById } from './service/UserService';
 import DisplayUserByUsername from './component/DisplayUserByUsername';
 
 function App() {
 
 
-    //const id=1;
-    //let promise = getUserById(id);
-    let promise = checkCredentials("admin","admin");
+    const id=1;
+    const promise = getUserById(id);
     promise.then((response) => {
         console.log("inside app.js promise.then");
-        console.log("the response is:", response.data);
+        console.log("the response getUserById is:", response.data);
     })
     .catch(error => console.log(error.message));
+    
+    
+    // const promise = checkCredentials("admin","admin");
+    // promise.then((response) => {
+    //     console.log("inside app.js promise.then");
+    //     console.log("the response checkCredentials is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
 
+    // const promise = findByUsername("admin");
+    // promise.then((response) => {
+    //     console.log("inside app.js findByUsername promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
 
 
 
@@ -37,7 +50,6 @@ function App() {
 
                     <div className="col-md-9">
 
-                        <DisplayUserByUsername />
 
                     </div>
                 </div>
