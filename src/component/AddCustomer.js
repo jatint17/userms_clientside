@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import validationConstants from "../validationConstants";
 import DisplayUserDetails from "./DisplayUserDetails";
 import commonStyle1 from "./css/commonStyle1.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addCustomerAction } from "../redux/addCustomer/addCustomerActions";
 
 export default function AddCustomer() {
   const usernameRef = React.createRef();
@@ -13,13 +15,27 @@ export default function AddCustomer() {
     validation: { username: undefined, password: undefined },
   };
   const [currentState, setNewState] = useState(initialState);
-  const response = { customer: undefined, errorMsg: undefined };
+
+  const response =useSelector((state)=>{
+    return (
+      {
+        customer: state.addCustomer.user,
+       errorMsg: state.addCustomer.error
+      }
+      );
+  });
+
+  const dispatch = useDispatch();
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (currentState.validation) {
+    if (currentState.validation.username || currentState.validation.password) {
         return;
       }
+
+      let data={...currentState};
+      dispatch(addCustomerAction(data));
+
   };
 
   const setFieldState = (reference) => {
@@ -101,6 +117,7 @@ export default function AddCustomer() {
 
         {response.customer ? (
           <div className={commonStyle1.margintop30}>
+            <h4 className="text-success">Customer added</h4>
             <DisplayUserDetails user={response.customer} />
           </div>
         ) : (

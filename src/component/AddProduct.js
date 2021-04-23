@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import validationConstants from "../validationConstants";
 import DisplayProductDetails from "./DisplayProductDetails";
 import commonStyle1 from "./css/commonStyle1.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductAction } from "../redux/addProduct/addProductActions";
 
 export default function AddProduct() {
   const productNameRef = React.createRef();
@@ -11,16 +13,25 @@ export default function AddProduct() {
   const initialState = {
     productName: undefined,
     price: undefined,
-    validations: { productName: undefined },
+    validations: { productName: undefined , price: undefined},
   };
-  const response = { product: undefined, errorMsg: undefined };
+
+  const response = useSelector(state => {
+    return (
+       { product: state.addProduct.product, errorMsg: state.addProduct.error });
+    });
+
   const [currentState, setNewState] = useState(initialState);
+
+  const dispatch = useDispatch();
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (currentState.validations) {
+    if (currentState.validations.productName || currentState.validations.price) {
         return;
       }
+      let data = {...currentState};
+    dispatch(addProductAction(data));
   };
 
   const setFieldState = (reference) => {
@@ -116,7 +127,7 @@ export default function AddProduct() {
 
         {response.product ? (
           <div className={commonStyle1.margintop30}>
-            <h4>Product added</h4>
+            <h4 className="text-success">Product added</h4>
             <DisplayProductDetails product={response.product} />
           </div>
         ) : (

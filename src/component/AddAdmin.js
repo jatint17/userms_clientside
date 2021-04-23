@@ -3,6 +3,8 @@ import DisplayUserDetails from "./DisplayUserDetails";
 import validationConstants from "../validationConstants";
 //import { addAdmin } from "../service/UserService";
 import commonStyle1 from "./css/commonStyle1.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addAdminAction } from "../redux/addAdmin/addAdminActions";
 
 export default function AddAdmin() {
   const usernameRef = React.createRef();
@@ -18,8 +20,13 @@ export default function AddAdmin() {
     password: undefined,
     validations: { username: undefined, password: undefined },
   };
-  const response = { admin: undefined, errorMsg: undefined };
+  const response = useSelector(state => {
+    return (
+       { admin: state.addAdmin.user, errorMsg: state.addAdmin.error });
+    });
   const [currentState, setNewState] = useState(initialState);
+
+  const dispatch = useDispatch();
 
   const setFieldState = (reference) => {
     const fieldName = reference.current.name;
@@ -58,9 +65,12 @@ export default function AddAdmin() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (currentState.validations) {
+    if (currentState.validations.username || currentState.validations.password) {
       return;
     }
+    let data = {...currentState};
+    dispatch(addAdminAction(data));
+
   };
 
   return (
