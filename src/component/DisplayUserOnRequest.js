@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
-import DisplayUserDetails from './DisplayUserDetails'
+import DisplayUserDetails from './DisplayUserDetails';
+import {displayUserByIdAction} from '../redux/displayUserById/displayUserByIdActions'
 import commonStyle1 from "./css/commonStyle1.module.css";
-import {getUserById} from "../service/UserService"
+import { getUserById } from "../service/UserService"
+import { useSelector, useDispatch } from 'react-redux';
 
 
 export default function DisplayUserOnRequest() {
 
-    let mockUser = { userId: 17, username: "user", errorMessage: undefined };
+    //let mockUser = { userId: 17, username: "user", errorMessage: undefined };
 
     let userIdRef = React.createRef();
 
     let initialState = { userId: undefined, validations: { userId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    let response = {user: mockUser, errorMessage: undefined};
+    let response = useSelector((state) => {
+        return ({ 
+            user: state.findById.user, 
+            error: state.findById.error 
+        });
+    });
+
+    const dispatch = useDispatch();
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -23,6 +32,9 @@ export default function DisplayUserOnRequest() {
             return;
         }
         console.log("inside submit handler");
+
+        let data = {...currentState};
+        dispatch(displayUserByIdAction(data));
     }
 
     let setFieldVal = (ref) => {
@@ -73,14 +85,14 @@ export default function DisplayUserOnRequest() {
             {response.user ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
-                    <DisplayUserDetails user={response.user}/>
+                    <DisplayUserDetails user={response.user} />
                 </div>
             ) : ''}
 
 
-            {response.errorMessage ? (
+            {response.error ? (
                 <div className="text-danger">
-                    {currentState.errorMessage}
+                    {currentState.error}
                 </div>
             ) : ''}
 

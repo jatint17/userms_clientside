@@ -15,6 +15,10 @@ import AddProduct from './component/AddProduct';
 import Login from './component/Login';
 import UpdateBalance from './component/UpdateBalance';
 import UpdatePrice from './component/UpdatePrice';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
+
 
 function App() {
 
@@ -74,6 +78,7 @@ function App() {
 
     return (
         <div className={commonStyle2.appbg}>
+            <Provider store={store} >
             <div className="container" style={{ marginTop: '50px' }}>
                 <div className="row">
                     <div className="col-md-9">
@@ -81,6 +86,7 @@ function App() {
                     </div>
                 </div>
             </div>
+            </Provider>
         </div>
     );
 }

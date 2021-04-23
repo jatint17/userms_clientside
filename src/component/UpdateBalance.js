@@ -1,23 +1,42 @@
 import React, { useState } from "react";
 import validationMessage from "../validationMessage";
-import DisplayUserDetails from "./DisplayUserDetails";
 import commonStyle1 from "./css/commonStyle1.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { updateBalanceAction } from "../redux/updateBalance/updateBalanceActions";
 
 
 export default function UpdateBalance() {
 
-    let mockCustomer = {customerId:20, newBalance: 1720.0};
+    //let mockCustomer = {customerId:20, newBalance: 1720.0};
 
     let initialState = {
         customerId: undefined, newBalance: undefined,
         validations: { customerId: undefined, newBalance: undefined }};
 
-    const response = {customer: mockCustomer, errorMesssage: undefined};
+    const response = useSelector((state) => {
+        return ({
+            customer: state.updateBalance.customer, 
+            error: state.updateBalance.error
+        });
+    });
+
+    const dispatch = useDispatch();//action function is here
 
     let [currentState, setNewState] = useState(initialState);
 
     let customerIdRef = React.createRef();
     let newBalanceRef = React.createRef();
+
+    let submitHandler = (event) => {
+        event.preventDefault();
+        if (currentState.validations.customerId) {
+            return;
+        }
+        console.log("inside submit handler");
+
+        let data = {...currentState};
+        dispatch(updateBalanceAction(data));
+    }
 
     let setFieldVal = (ref) => {
         let field = ref.current;
@@ -51,7 +70,7 @@ export default function UpdateBalance() {
         <div className={commonStyle1.margintop30}>
             <h3>Update Customer Balance</h3>
             <div>
-                <form>
+                <form onSubmit = {submitHandler}>
                     <div className="form-group">
                         <label>CustomerId: </label>
                         <input type="number" ref={customerIdRef} name="customerId" onChange={() => setFieldVal(customerIdRef)} className="form-control"/>
@@ -72,14 +91,14 @@ export default function UpdateBalance() {
                 {response.customer ? (
                     <div className={commonStyle1.margintop30}>
                         <h2>Customer Details: </h2>
-                        Customer ID: {response.customer.customerId}<br />
-                        Balance: Rs {response.customer.newBalance}
+                        Customer ID: {response.customer.userId}<br />
+                        Balance: Rs {response.customer.balance}
                     </div>
                 ) : ''}
 
-                {response.errorMessage ? (
+                {response.error ? (
                     <div className="text-danger">
-                        Error Occurred: {response.errorMessage}
+                        Error Occurred: {response.error}
                     </div>
                 ) : ''}
 
