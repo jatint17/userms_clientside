@@ -5,7 +5,7 @@ import DisplayUserDetails from './DisplayUserDetails';
 
 export default function DisplayCustomerOnRequest() {
 
-    let mockCustomer = { customerId: 111, errorMessage: undefined };
+    let mockCustomer = { customerId: 111, username: "user", errorMessage: undefined };
 
     let customerIdRef = React.createRef();
 
@@ -46,7 +46,7 @@ export default function DisplayCustomerOnRequest() {
     }
 
     const convert = (customer) => {
-        let user = {userId: customer.customerId};
+        let user = {userId: customer.customerId, username: customer.username};
         return user;
     }
 

@@ -57,8 +57,8 @@ export default function Login() {
 
 
     //testing
-    let user = { username: "username", password: "password" };
-    response = { user: { username: currentState.username, password: currentState.password }, errorMesssage: undefined };
+    let user = { username: "user12", password: "password" };
+    response = { user: user, errorMesssage: undefined };
 
     return (
         <div className={commonStyle1.margintop30}>
@@ -85,15 +85,15 @@ export default function Login() {
                 ) : ''}
             </div>
 
-            {/*testing*/}
-            {((user.username === response.user.username) && (user.password === response.user.password)) ? (
+            {/* testing
+            {((currentState.username === response.user.username) && (currentState.password === response.user.password)) ? (
                 <div>Correct details</div>
-            ) : ''}
+            ) : ''} */}
 
             {response.user ? (
                 <div className="text-success">
                     <h3>Entered details: </h3>
-                    {response.user.username}
+                    Username: {response.user.username}
                 </div>
             ) : ''}
 

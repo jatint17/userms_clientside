@@ -6,7 +6,7 @@ import commonStyle1 from "./css/commonStyle1.module.css";
 
 export default function UpdateBalance() {
 
-    let mockCustomer = {customerId:20, name:"Customer"};
+    let mockCustomer = {customerId:20, newBalance: 1720.0};
 
     let initialState = {
         customerId: undefined, newBalance: undefined,
@@ -72,7 +72,8 @@ export default function UpdateBalance() {
                 {response.customer ? (
                     <div className={commonStyle1.margintop30}>
                         <h2>Customer Details: </h2>
-                        <DisplayUserDetails user={convert(response.customer)} />
+                        Customer ID: {response.customer.customerId}<br />
+                        Balance: Rs {response.customer.newBalance}
                     </div>
                 ) : ''}
 

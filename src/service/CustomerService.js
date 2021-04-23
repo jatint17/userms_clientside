@@ -18,5 +18,12 @@ function updateBalance(data){
     return promise;
 }
 
+export function login(data){
+    const url = baseUrl+"/login";
+    let requestData = {username: data.username, password: data.password};
+    const promise = axios.put(url, requestData);
+    return promise;
+}
+
 export {updateBalance, addCustomer};
 

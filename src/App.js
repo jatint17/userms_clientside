@@ -5,14 +5,18 @@ import { addCustomer } from './service/CustomerService';
 import { login, addAdmin, checkCredentials, findByUsername, getUserById } from './service/UserService';
 import { updatePrice } from './service/ProductService';
 import { updateBalance } from './service/CustomerService';
+import DisplayUserByUsername from './component/DisplayUserByUsername';
 import DisplayProductOnRequest from './component/DisplayProductOnRequest';
 import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
 import DisplayUserOnRequest from './component/DisplayUserOnRequest';
 import AddAdmin from './component/AddAdmin';
 import AddCustomer from './component/AddCustomer';
+import AddProduct from './component/AddProduct';
+import Login from './component/Login';
+import UpdateBalance from './component/UpdateBalance';
+import UpdatePrice from './component/UpdatePrice';
 
 function App() {
-
 
     // let data = { productName: "t-shirt", price: 1500.0 };
     // const promise = addProduct(data);
@@ -73,7 +77,7 @@ function App() {
             <div className="container" style={{ marginTop: '50px' }}>
                 <div className="row">
                     <div className="col-md-9">
-                        <AddCustomer />
+                        <UpdatePrice />
                     </div>
                 </div>
             </div>

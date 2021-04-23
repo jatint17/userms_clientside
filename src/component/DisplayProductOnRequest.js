@@ -6,7 +6,7 @@ import commonStyle1 from "./css/commonStyle1.module.css";
 
 export default function DisplayProductOnRequest() {
 
-    let mockProduct = { productId: 111, productName: "hello", price:287};
+    let mockProduct = { productId: 111, productName: "nike", price:2870};
 
     let productIdRef = React.createRef();
 

@@ -7,13 +7,13 @@ export default function AddProduct() {
   const productNameRef = React.createRef();
   const priceRef = React.createRef();
 
-  //let mockProduct = { productId: 111, productName: "Shoes", price: 1000 };
+  let mockProduct = { productId: 111, productName: "Shoes", price: 1000 };
   const initialState = {
     productName: undefined,
     price: undefined,
     validations: { productName: undefined },
   };
-  const response = { product: undefined, errorMsg: undefined };
+  const response = { product: mockProduct, errorMsg: undefined };
   const [currentState, setNewState] = useState(initialState);
 
   const submitHandler = (event) => {
@@ -21,6 +21,7 @@ export default function AddProduct() {
     if (currentState.validations) {
         return;
       }
+    console.log(response);
   };
 
   const setFieldState = (reference) => {

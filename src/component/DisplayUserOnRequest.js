@@ -7,14 +7,14 @@ import {getUserById} from "../service/UserService"
 
 export default function DisplayUserOnRequest() {
 
-    //let mockUser = { userId: "user", errorMessage: undefined };
+    let mockUser = { userId: 17, username: "user", errorMessage: undefined };
 
     let userIdRef = React.createRef();
 
     let initialState = { userId: undefined, validations: { userId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    let response = {user: undefined, errorMessage: undefined};
+    let response = {user: mockUser, errorMessage: undefined};
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -73,7 +73,7 @@ export default function DisplayUserOnRequest() {
             {response.user ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
-                    <DisplayUserDetails user={currentState.user}/>
+                    <DisplayUserDetails user={response.user}/>
                 </div>
             ) : ''}
 

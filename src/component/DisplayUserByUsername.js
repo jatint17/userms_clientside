@@ -8,7 +8,7 @@ import validationConstants from '../validationConstants';
 
 export default function DisplayUserByUsername() {
 
-    let mockUser = { username: "admin", password: "admin"};
+    let mockUser = {userId:18, username: "admin", password: "admin"};
 
     let usernameRef = React.createRef();
 

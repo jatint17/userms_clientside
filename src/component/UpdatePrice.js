@@ -6,7 +6,7 @@ import commonStyle1 from "./css/commonStyle1.module.css";
 
 export default function UpdatePrice() {
 
-    let mockproduct = { productId: 111, productName: "hello", price: 287 };
+    let mockproduct = { productId: 13, productName: "adidas", price: 2287 };
 
     let initialState = {
         product: mockproduct, productId: undefined, newPrice: undefined,
