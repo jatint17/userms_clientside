@@ -82,7 +82,7 @@ function App() {
             <div className="container" style={{ marginTop: '50px' }}>
                 <div className="row">
                     <div className="col-md-9">
-                        <DisplayUserOnRequest />
+                        <DisplayProductOnRequest />
                     </div>
                 </div>
             </div>

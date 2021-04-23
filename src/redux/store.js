@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import updateBalanceReducer from "./updateBalance/updateBalanceReducer";
 import displayUserByIdReducer from "./displayUserById/displayUserByIdReducer";
 import updatePriceReducer from "./updatePrice/updatePriceReducer";
+import productOnRequestReducer from "./productOnRequest/productOnRequestReducer";
 
 
 // const store = createStore(
@@ -15,7 +16,8 @@ const store = createStore(
     combineReducers({
         findById:displayUserByIdReducer,
         updateBalance:updateBalanceReducer,
-        updatePrice:updatePriceReducer
+        updatePrice:updatePriceReducer,
+        findProduct:productOnRequestReducer
     }),
     composeWithDevTools(applyMiddleware(thunk))
 );
