@@ -17,6 +17,58 @@ import Profile from './component/Profile';
 
 function App() {
 
+    // let data = { productName: "t-shirt", price: 1500.0 };
+    // const promise = addProduct(data);
+    // promise.then(response => console.log("inside success function:", response.data)).
+    //     catch(error => console.log("inside error function:", error.response.data));
+
+    // const id=1;
+    // const promise = getUserById(id);
+    // promise.then((response) => {
+    //     console.log("inside app.js promise.then");
+    //     console.log("the response getUserById is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
+
+    // const promise = checkCredentials("admin","admin");
+    // promise.then((response) => {
+    //     console.log("inside app.js promise.then");
+    //     console.log("the response checkCredentials is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
+
+    // const promise = findByUsername("admin");
+    // promise.then((response) => {
+    //     console.log("inside app.js findByUsername promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    // .catch(error => console.log(error.message));
+
+    // let data = { productId: 7, newPrice: 1800 }
+    // const promise = updatePrice(data);
+    // promise.then((response) => {
+    //     console.log("inside app.js updatePrice promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    //     .catch(error => console.log(error.message));
+
+    // let data = { customerId: 3, newBalance: 1800 }
+    // const promise = updateBalance(data);
+    // promise.then((response) => {
+    //     console.log("inside app.js updateBalance promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    //     .catch(error => console.log(error.message));
+
+
+    // let data = { username: "username11", password:"password" };
+    // const promise = addAdmin(data);
+    // promise.then((response) => {
+    //     console.log("inside app.js updateBalance promise.then");
+    //     console.log("the response is:", response.data);
+    // })
+    //     .catch(error => console.log(error.message));
+
 
     // let data = { productName: "t-shirt", price: 1500.0 };
     // const promise = addProduct(data);
