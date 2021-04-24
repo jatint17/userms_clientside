@@ -4,18 +4,22 @@ import DisplayUserDetails from './DisplayUserDetails'
 import commonStyle1 from "./css/commonStyle1.module.css";
 import {getUserById} from "../service/UserService"
 import validationConstants from '../validationConstants';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function DisplayUserByUsername() {
 
-    let mockUser = { username: "admin", password: "admin"};
+   // let mockUser = { username: "admin", password: "admin"};
 
     let usernameRef = React.createRef();
 
     let initialState = { username: undefined, validations: { username: undefined } };
-    const response = { user: mockUser, errorMessage: undefined };
-
     let [currentState, setNewState] = useState(initialState);
+    let response =useSelector ((state)=>{
+        return (
+            {user:state.user,error:undefined});
+    });
+   const dispatch=useDispatch(); 
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -79,7 +83,7 @@ export default function DisplayUserByUsername() {
             ) : ''}
 
 
-            {response.errorMessage ? (
+            {response.error? (
                 <div className="text-danger">
                     {response.errorMessage}
                 </div>

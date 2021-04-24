@@ -10,6 +10,10 @@ import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
 import DisplayUserOnRequest from './component/DisplayUserOnRequest';
 import AddAdmin from './component/AddAdmin';
 import AddCustomer from './component/AddCustomer';
+import DisplayUserByUsername from './component/DisplayUserByUsername';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 
 function App() {
 
@@ -70,13 +74,15 @@ function App() {
 
     return (
         <div className={commonStyle2.appbg}>
+            <Provider store={store}>
             <div className="container" style={{ marginTop: '50px' }}>
                 <div className="row">
                     <div className="col-md-9">
-                        <AddCustomer />
+                        <DisplayCustomerOnRequest/>
                     </div>
                 </div>
             </div>
+            </Provider>
         </div>
     );
 }
