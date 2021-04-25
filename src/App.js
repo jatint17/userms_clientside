@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import commonStyle2 from './component/css/commonStyle2.module.css'
 import { Provider } from 'react-redux';
 import store from "./redux/store"
+import NavBar from './component/NavBar'
 import AddProduct from './component/AddProduct';
 import AddCustomer from './component/AddCustomer';
 import AddAdmin from './component/AddAdmin';
@@ -83,6 +84,7 @@ function App() {
         <div className={commonStyle2.appbg}>
             <Provider store={store}>
                 <Router>
+                    <NavBar />
                     <div className="container" style={{ marginTop:'50px' }}>
                         <div className="row">
                             <div className="col-md-12">
