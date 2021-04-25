@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
 import DisplayProductDetails from './DisplayProductDetails';
-import commonStyle1 from "./css/commonStyle1.module.css";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { productByIdAction } from '../redux/productOnRequest/productOnRequestActions';
 
 export default function DisplayProductOnRequest() {
 
-    let mockProduct = { productId: 111, productName: "hello", price:287};
+    //let mockProduct = { productId: 111, productName: "nike", price: 2870 };
 
     let productIdRef = React.createRef();
 
     let initialState = { productId: undefined, validations: { productId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    const response = { product: mockProduct, errorMessage: undefined };
+    const response = useSelector((state) => {
+        return ({ 
+            product: state.productById.product, 
+            error: state.productById.error 
+        });
+    });
+
+    let dispatch = useDispatch();
+
 
 
     let submitHandler = (event) => {
@@ -22,8 +30,10 @@ export default function DisplayProductOnRequest() {
         if (currentState.validations.productId) {
             return;
         }
-        console.log(response.product);
+        console.log("inside submit handler", response);
 
+        let data = {...currentState};
+        dispatch(productByIdAction(data));
     }
 
     let setFieldVal = (ref) => {
@@ -59,7 +69,7 @@ export default function DisplayProductOnRequest() {
                         <label>Enter productId: </label>
                         <input type="number" ref={productIdRef} className="form-control col-md-4" name="productId" onChange={() => setFieldVal(productIdRef)} /><br />
 
-                        <button className={"btn btn-primary " + commonStyle1.buttoncolor}>Check</button>
+                        <button className={"btn btn-primary"}>Check</button>
                     </div>
                 </form>
 
@@ -80,7 +90,7 @@ export default function DisplayProductOnRequest() {
             ) : ''}
 
 
-            {response.errorMessage ? (
+            {response.error ? (
                 <div className="text-danger">
                     Error Occurred: {response.errorMessage}
                 </div>

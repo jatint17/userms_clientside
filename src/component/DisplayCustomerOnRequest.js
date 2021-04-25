@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { displayCustomerByIdAction } from '../redux/displayCustomerById/displayCustomerByIdActions';
 import validationMessage from '../validationMessage';
-import commonStyle1 from "./css/commonStyle1.module.css";
-import DisplayUserDetails from './DisplayUserDetails';
+import DisplayCustomerDetails from './DisplayCustomerDetails';
 
 export default function DisplayCustomerOnRequest() {
 
-    let mockCustomer = { customerId: 111, errorMessage: undefined };
+    //let mockCustomer = { customerId: 111, errorMessage: undefined };
 
     let customerIdRef = React.createRef();
 
     let initialState = { customerId: undefined, validations: { customerId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    let response = { customer: mockCustomer, errorMessage: undefined };
+    const response = useSelector((state) => {
+        return ({
+            customer: state.customerById.user,
+            error: state.customerById.error.message
+        })
+    })
+
+    let dispatch = useDispatch();
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -20,6 +28,9 @@ export default function DisplayCustomerOnRequest() {
         if (currentState.validations.customerId) {
             return;
         }
+
+        let data = { ...currentState };
+        dispatch(displayCustomerByIdAction(data));
     }
 
     let setFieldVal = (ref) => {
@@ -34,7 +45,7 @@ export default function DisplayCustomerOnRequest() {
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = { ...currentState, [fieldName]: fieldVal, customer: undefined, errorMessage: undefined, validations: validationState };
+        let newState = { ...currentState, [fieldName]: fieldVal, validations: validationState };
         setNewState(newState);
     }
 
@@ -43,11 +54,6 @@ export default function DisplayCustomerOnRequest() {
             return validationMessage.idValidation;
         }
         return undefined;
-    }
-
-    const convert = (customer) => {
-        let user = {userId: customer.customerId};
-        return user;
     }
 
 
@@ -75,14 +81,14 @@ export default function DisplayCustomerOnRequest() {
             {response.customer ? (
                 <div className="text-success">
                     <h3>Customer Found:</h3>
-                    <DisplayUserDetails user={convert(response.customer)} />
+                    <DisplayCustomerDetails customer={response.customer} />
                 </div>
             ) : ''}
 
 
-            {response.errorMessage ? (
+            {response.error ? (
                 <div className="text-danger">
-                    Error Occurred: {currentState.errorMessage}
+                    Error Occurred: {response.error}
                 </div>
             ) : ''}
 

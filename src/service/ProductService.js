@@ -3,18 +3,20 @@ import axios from 'axios';
 
 const baseUrl = "http://localhost:8585"
 
-function addProduct(data){
+function addProduct(data) {
     const url = baseUrl + "/a/products/add";
-    let requestData = {productName: data.productName, price: data.price};
-    const promise = axios.post(url, requestData);
+    let requestData = { productName: data.productName, price: data.price };
+    const promise = axios.post(url, requestData, { withCredentials=true });
     return promise;
 }
 
-function updatePrice(data){
-    const url = baseUrl+"/a/products/updateprice";
-    let requestData = {productId: data.productId, newPrice: data.newPrice};
-    const promise = axios.put(url, requestData);
+function getProductById(productId) {
+    const url = baseUrl + "/c/products/byid/" + productId;
+    console.log(url);
+    const promise = axios.get(url, { withCredentials=true });
+    console.log("inside axios method");
+    console.log(promise);
     return promise;
 }
 
-export {updatePrice, addProduct};
+export { getProductById, addProduct };

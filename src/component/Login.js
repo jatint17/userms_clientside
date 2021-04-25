@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { loginAction } from "../redux/login/loginActions";
+import { login } from "../service/authService";
 import validationConstants from "../validationConstants"
-import commonStyle1 from "./css/commonStyle1.module.css";
 
 export default function Login() {
 
@@ -9,7 +12,15 @@ export default function Login() {
         validations: { username: undefined, password: undefined }
     };
 
-    let response = { user: undefined, errorMesssage: undefined };
+    let response = useSelector((state) => {
+        return ({
+            successMsg: state.login.successMsg,
+            error: state.login.error.message
+        });
+    });
+
+    let dispatch = useDispatch();
+    const history = useHistory();
 
     let [currentState, setNewState] = useState(initialState);
 
@@ -19,6 +30,12 @@ export default function Login() {
     const submitHandler = (event) => {
         event.preventDefault();
         console.log(response.user);
+
+        // const result = login(currentState.username, currentState.password);
+        // console.log(result);
+        let data = { ...currentState }
+        dispatch(loginAction(data));
+
     }
 
     let setFieldVal = (ref) => {
@@ -56,12 +73,8 @@ export default function Login() {
     }
 
 
-    //testing
-    let user = { username: "username", password: "password" };
-    response = { user: { username: currentState.username, password: currentState.password }, errorMesssage: undefined };
-
     return (
-        <div className={commonStyle1.margintop30}>
+        <div style={{ paddingBottom: '50px' }}>
             <h3>Login Form</h3>
             <div>
                 <form onSubmit={submitHandler}>
@@ -69,37 +82,36 @@ export default function Login() {
                         <label>Enter username: </label>
                         <input type="text" ref={usernameRef} name="username" onChange={() => setFieldVal(usernameRef)} className="form-control" />
                     </div>
+
+                    {currentState.validations.username ? (
+                        <div className="text-danger">
+                            {currentState.validations.username}
+                        </div>
+                    ) : ''}
+
                     <div className="form-group">
                         <label>Enter password: </label>
-                        <input type="password" ref={passwordRef} name="password" onChange={() => setFieldVal(passwordRef)} className="form-control" />
+                        <input type="password" ref={passwordRef} name="password" onChange={() => setFieldVal(passwordRef)} className="form-control" /><br />
                     </div>
-                    <button className="btn btn-primary">Update Balance</button>
+
+                    {currentState.validations.password ? (
+                        <div className="text-danger">
+                            {currentState.validations.password}
+                        </div>
+                    ) : ''}
+
+                    <button className="btn btn-primary">Login</button>
                 </form>
 
-                {currentState.validations ? (
-                    <div className="text-danger">
-                        {currentState.validations.username}
-                        {currentState.validations.password}
-
-                    </div>
-                ) : ''}
             </div>
 
-            {/*testing*/}
-            {((user.username === response.user.username) && (user.password === response.user.password)) ? (
-                <div>Correct details</div>
+            {response.successMsg ? (
+                history.push("/home")
             ) : ''}
 
-            {response.user ? (
-                <div className="text-success">
-                    <h3>Entered details: </h3>
-                    {response.user.username}
-                </div>
-            ) : ''}
-
-            {response.errorMesssage ? (
+            {response.error ? (
                 <div className="text-danger">
-                    errorMessage
+                    {response.error}
                 </div>
             ) : ''}
         </div>

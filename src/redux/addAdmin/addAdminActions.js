@@ -21,8 +21,9 @@ export function addAdminFail(error){
 
 export function addAdminAction(data){
     return()=>{
-    //const mockUser={userId:7, username:"user_7"};
-    //store.dispatch(addAdminSuccess(mockUser));
-    store.dispatch(addAdminFail("admin add nahi hua babu bhaiyaaa"));
+    const mockUser={adminId:7, username:"user_7"};
+    console.log(data);
+    store.dispatch(addAdminSuccess(mockUser));
+    //store.dispatch(addAdminFail("admin add nahi hua babu bhaiyaaa"));
 }
 }

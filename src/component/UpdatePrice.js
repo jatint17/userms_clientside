@@ -2,18 +2,35 @@ import React, { useState } from "react";
 import validationMessage from "../validationMessage";
 import DisplayProductDetails from "./DisplayProductDetails";
 import commonStyle1 from "./css/commonStyle1.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePriceAction } from "../redux/updatePrice/updatePriceActions";
 
 
 export default function UpdatePrice() {
 
-    let mockproduct = { productId: 111, productName: "hello", price: 287 };
+    //let mockproduct = { productId: 13, productName: "adidas", price: 2287 };
 
-    let initialState = {
-        product: mockproduct, productId: undefined, newPrice: undefined,
-        errorMessage: undefined, validations: { productId: undefined, newPrice: undefined }
-    };
-
+    let initialState = { productId: undefined, newPrice: undefined, validations: { productId: undefined, newPrice: undefined } };
     let [currentState, setNewState] = useState(initialState);
+
+    let response = useSelector((state) => {
+        return ({
+            product: state.updatePrice.product,
+            error: state.updatePrice.error
+        });
+    });
+
+    let dispatch = useDispatch();
+
+    let submitHandler = (event) => {
+        event.preventDefault();
+        if (currentState.validations.productId) {
+            return;
+        }
+        console.log("inside submit handler", response);
+        let data = { ...currentState };
+        dispatch(updatePriceAction(data));
+    }
 
     let productIdRef = React.createRef();
     let newPriceRef = React.createRef();
@@ -48,34 +65,38 @@ export default function UpdatePrice() {
         <div className={commonStyle1.margintop30}>
             <h3>Update Product Price</h3>
             <div>
-                <form>
+                <form onSubmit={submitHandler}>
                     <div className="form-group">
                         <label>productId: </label>
                         <input type="number" ref={productIdRef} name="productId" onChange={() => setFieldVal(productIdRef)} className="form-control" />
                     </div>
+
+                    {currentState.validations.productId ? (
+                        <div>
+                            {currentState.validations.productId}
+                        </div>
+                    ) : ''}
+
                     <div className="form-group">
                         <label>New Price: </label>
                         <input type="number" ref={newPriceRef} name="newPrice" onChange={() => setFieldVal(newPriceRef)} className="form-control" />
                     </div>
+
                     <button className="btn btn-primary">Update Price</button>
                 </form>
 
-                {currentState.validations ? (
-                    <div>
-                        {currentState.validations.productId}
-                    </div>
-                ) : ''}
 
-                {currentState.product ? (
+
+                {response.product ? (
                     <div className={commonStyle1.margintop30}>
                         <h3>Product Details: </h3>
-                        <DisplayProductDetails product={currentState.product} />
+                        <DisplayProductDetails product={response.product} />
                     </div>
                 ) : ''}
 
-                {currentState.errorMessage ? (
+                {response.error ? (
                     <div className="text-danger">
-                        Error Occurred: {currentState.errorMessage}
+                        Error Occurred: {response.error}
                     </div>
                 ) : ''}
 

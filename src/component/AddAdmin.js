@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import DisplayUserDetails from "./DisplayUserDetails";
 import validationConstants from "../validationConstants";
-//import { addAdmin } from "../service/UserService";
 import commonStyle1 from "./css/commonStyle1.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addAdminAction } from "../redux/addAdmin/addAdminActions";
+import DisplayAdminDetails from "./DisplayAdminDetails";
 
 export default function AddAdmin() {
   const usernameRef = React.createRef();
@@ -20,10 +19,12 @@ export default function AddAdmin() {
     password: undefined,
     validations: { username: undefined, password: undefined },
   };
+
   const response = useSelector(state => {
     return (
-       { admin: state.addAdmin.user, errorMsg: state.addAdmin.error });
-    });
+      { admin: state.addAdmin.user, errorMsg: state.addAdmin.error });
+  });
+
   const [currentState, setNewState] = useState(initialState);
 
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ export default function AddAdmin() {
     if (currentState.validations.username || currentState.validations.password) {
       return;
     }
-    let data = {...currentState};
+    let data = { ...currentState };
     dispatch(addAdminAction(data));
 
   };
@@ -123,7 +124,7 @@ export default function AddAdmin() {
       {response.admin ? (
         <div className={commonStyle1.margintop30}>
           <h4 className="text-success">Admin added</h4>
-          <DisplayUserDetails user={response.admin} />
+          <DisplayAdminDetails admin={response.admin} />
         </div>
       ) : (
         ""

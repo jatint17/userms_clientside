@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import validationMessage from '../validationMessage';
-import DisplayUserDetails from './DisplayUserDetails'
-import commonStyle1 from "./css/commonStyle1.module.css";
-import {getUserById} from "../service/UserService"
+import DisplayAdminDetails from './DisplayAdminDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { displayAdminByIdAction } from '../redux/displayAdminById/displayAdminByIdActions'
 
 
-export default function DisplayUserOnRequest() {
+export default function DisplayAdminOnRequest() {
 
-    //let mockUser = { userId: "user", errorMessage: undefined };
+    let adminIdRef = React.createRef();
 
-    let userIdRef = React.createRef();
-
-    let initialState = { userId: undefined, validations: { userId: undefined } };
+    let initialState = { adminId: undefined, validations: { adminId: undefined } };
     let [currentState, setNewState] = useState(initialState);
 
-    let response = {user: undefined, errorMessage: undefined};
+    let response = useSelector((state) => {
+        return ({
+            admin: state.adminById.user,
+            error: state.adminById.error
+        });
+    });
+
+    const dispatch = useDispatch();
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -23,6 +28,9 @@ export default function DisplayUserOnRequest() {
             return;
         }
         console.log("inside submit handler");
+
+        let data = { ...currentState };
+        dispatch(displayAdminByIdAction(data));
     }
 
     let setFieldVal = (ref) => {
@@ -31,7 +39,7 @@ export default function DisplayUserOnRequest() {
         let fieldVal = field.value;
 
         let validationMessage;
-        if (ref === userIdRef) {
+        if (ref === adminIdRef) {
             validationMessage = validateId(fieldVal);
         }
 
@@ -41,8 +49,8 @@ export default function DisplayUserOnRequest() {
         setNewState(newState);
     }
 
-    let validateId = (userId) => {
-        if (userId < 0) {
+    let validateId = (adminId) => {
+        if (adminId < 0) {
             return validationMessage.idValidation;
         }
         return undefined;
@@ -51,36 +59,36 @@ export default function DisplayUserOnRequest() {
 
     return (
         <div>
-            <h3>Find User Details by Id</h3>
+            <h3>Find Admin Details by Id</h3>
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
                         <label>UserId: </label>
-                        <input type="number" ref={userIdRef} className="form-control col-md-4" name="userId" onChange={() => setFieldVal(userIdRef)} /><br />
+                        <input type="number" ref={adminIdRef} className="form-control col-md-4" name="adminId" onChange={() => setFieldVal(adminIdRef)} /><br />
 
                         <button className="btn btn-primary">Check</button>
                     </div>
                 </form>
 
-                {currentState.validations.userId ? (
+                {currentState.validations.adminId ? (
                     <div className="text-danger">
-                        {currentState.validations.userId}
+                        {currentState.validations.adminId}
                     </div>
                 ) : ''}
 
             </div>
 
-            {response.user ? (
+            {response.admin ? (
                 <div className="text-success">
                     <h2>User Found:</h2>
-                    <DisplayUserDetails user={currentState.user}/>
+                    <DisplayAdminDetails admin={response.admin} />
                 </div>
             ) : ''}
 
 
             {response.errorMessage ? (
                 <div className="text-danger">
-                    {currentState.errorMessage}
+                    {response.error}
                 </div>
             ) : ''}
 
