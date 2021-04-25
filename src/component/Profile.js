@@ -5,6 +5,7 @@ import DisplayCustomerByUsername from "./DisplayCustomerByUsername";
 export default function Profile() {
 
     const result = isLoggedIn();
+    console.log("Profile logged in?",result)
     if (result) {
         let username = getLoginUserName();
         return (

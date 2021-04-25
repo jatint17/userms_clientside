@@ -1,9 +1,14 @@
+import { BrowserRouter as Router } from 'react-router-dom';
+import NavBar from './NavBar';
+import React from 'react';
+
+
 export default function Home() {
 
     return (
-        <div>
-            <h1>Home Page</h1>
-
-        </div>
+            <Router>
+                <NavBar />
+                <h1>Welcome to the user module.</h1>
+            </Router>
     );
 }

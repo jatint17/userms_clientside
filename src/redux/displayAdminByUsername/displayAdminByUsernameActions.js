@@ -1,3 +1,4 @@
+import { findByUsername } from "../../service/AdminService";
 import store from "../store";
 import displayAdminByUsernameConstants from "./displayAdminByUsernameConstants";
 
@@ -19,8 +20,16 @@ export function displayAdminByUsernameFail(error) {
 
 export function displayAdminByUsernameAction(data) {
   return () => {
-    const mockUser = { adminId: 12, username: "user12" };
-    console.log(data);
-    store.dispatch(displayAdminByUsernameSuccess(mockUser));
+
+    const promise = findByUsername(data);
+    promise.then((response) => {
+      console.log("inside app.js findByUsername promise.then");
+      console.log("the response is:", response.data);    
+      store.dispatch(displayAdminByUsernameSuccess(response.data));
+    })
+      .catch(error => {
+        console.log(error.message);
+        store.dispatch(displayAdminByUsernameFail(error));
+      });
   }
 }
