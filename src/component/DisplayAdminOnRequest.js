@@ -63,7 +63,7 @@ export default function DisplayAdminOnRequest() {
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label>UserId: </label>
+                        <label>Admin Id: </label>
                         <input type="number" ref={adminIdRef} className="form-control col-md-4" name="adminId" onChange={() => setFieldVal(adminIdRef)} /><br />
 
                         <button className="btn btn-primary">Check</button>

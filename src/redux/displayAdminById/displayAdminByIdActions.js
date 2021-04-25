@@ -1,6 +1,6 @@
 import store from "../store";
 import displayAdminByIdConstants from "./displayAdminByIdConstants";
-
+import { getAdminById } from "../../service/AdminService";
 
 export function displayAdminByIdSuccess(user) {
     return ({
@@ -20,10 +20,19 @@ export function displayAdminByIdFail(error) {
 
 export function displayAdminByIdAction(data) {
     return () => {
-        const mockUser = { adminId: 15, username: "user15" };
         console.log("Action method called");
-        console.log("mock user: ", mockUser);
-        console.log("details from submit handler: ",data);
-        store.dispatch(displayAdminByIdSuccess(mockUser));
+        console.log("details from submit handler: ", data);
+
+        const promise = getAdminById(data.adminId);
+        promise.then((response) => {
+            store.dispatch(displayAdminByIdSuccess(response.data));
+
+            console.log("inside app.js promise.then");
+            console.log("the response getUserById is:", response.data);
+        })
+            .catch((error) => {
+                console.log(error.message)
+                store.dispatch(displayAdminByIdFail(error));
+            });
     }
 }

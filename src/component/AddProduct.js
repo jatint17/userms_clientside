@@ -9,17 +9,16 @@ export default function AddProduct() {
   const productNameRef = React.createRef();
   const priceRef = React.createRef();
 
-  //let mockProduct = { productId: 111, productName: "Shoes", price: 1000 };
   const initialState = {
     productName: undefined,
     price: undefined,
-    validations: { productName: undefined , price: undefined},
+    validations: { productName: undefined, price: undefined },
   };
 
   const response = useSelector(state => {
     return (
-       { product: state.addProduct.product, errorMsg: state.addProduct.error });
-    });
+      { product: state.addProduct.product, errorMsg: state.addProduct.error.message });
+  });
 
   const [currentState, setNewState] = useState(initialState);
 
@@ -28,9 +27,9 @@ export default function AddProduct() {
   const submitHandler = (event) => {
     event.preventDefault();
     if (currentState.validations.productName || currentState.validations.price) {
-        return;
-      }
-      let data = {...currentState};
+      return;
+    }
+    let data = { ...currentState };
     dispatch(addProductAction(data));
   };
 
@@ -76,7 +75,7 @@ export default function AddProduct() {
   };
 
   return (
-    <div className={commonStyle1.margintop30}>
+    <div>
       <form onSubmit={submitHandler}>
         <h3>Enter new product details</h3>
 
@@ -109,8 +108,7 @@ export default function AddProduct() {
           />
         </div>
 
-        <button className={"btn btn-primary " + commonStyle1.buttoncolor}>
-          {" "}
+        <button className={"btn btn-primary"}>
           Create product
         </button>
 
@@ -126,7 +124,7 @@ export default function AddProduct() {
         )}
 
         {response.product ? (
-          <div className={commonStyle1.margintop30}>
+          <div>
             <h4 className="text-success">Product added</h4>
             <DisplayProductDetails product={response.product} />
           </div>
