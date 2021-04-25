@@ -21,8 +21,8 @@ export function addProductFail(error){
 
 export function addProductAction(data){
     return()=>{
-    //const mockProduct={productId:11, productName:"watch", price: 8999.99};
-    //store.dispatch(addProductSuccess(mockProduct));
-    store.dispatch(addProductFail("product add nahi hua lol"));
+    const mockProduct={productId:11, productName:"watch", price: 8999.99};
+    store.dispatch(addProductSuccess(mockProduct));
+    //store.dispatch(addProductFail("product add nahi hua lol"));
 }
 }
