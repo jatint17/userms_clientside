@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { loginAction } from "../redux/login/loginActions";
-import { login } from "../service/authService";
 import validationConstants from "../validationConstants"
+import NavLogin from "./NavLogin";
 
 export default function Login() {
-    
+
 
     let initialState = {
         username: undefined, password: undefined,
@@ -17,7 +17,7 @@ export default function Login() {
     let [currentState, setNewState] = useState(initialState);
 
     let response = useSelector((state) => {
-        const responseObj= ({
+        const responseObj = ({
 
             successMsg: state.login.successMsg,
             error: state.login.error
@@ -35,10 +35,8 @@ export default function Login() {
         event.preventDefault();
         console.log(response.user);
 
-        // const result = login(currentState.username, currentState.password);
-        // console.log(result);
         let data = { ...currentState }
-        dispatch(loginAction(data,history));
+        dispatch(loginAction(data, history));
 
     }
 
@@ -109,8 +107,8 @@ export default function Login() {
 
             </div>
 
-            {response.successMsg ? (
-               "success"//  history.push("/home")
+            {response.successMsg ? (''
+
             ) : ''}
 
             {response.error ? (
@@ -118,6 +116,8 @@ export default function Login() {
                     {response.error.message}
                 </div>
             ) : ''}
+
+
         </div>
     );
 }

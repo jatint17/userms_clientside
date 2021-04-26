@@ -70,7 +70,7 @@ export default function AddCustomer() {
   };
 
   return (
-    <div className={commonStyle1.margintop30}>
+    <div>
       <form onSubmit={submitHandler}>
         <h3>Enter new customer details</h3>
 

@@ -11,7 +11,7 @@ export default function Profile() {
         return (
             <div>
                 <h2>Profile</h2>
-                Your username is {username} and you are logged in
+                Your username is <b>{username}</b> and you are logged in
             </div>
         )
     }

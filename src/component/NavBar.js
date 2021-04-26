@@ -21,29 +21,8 @@ export default function NavBar() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            {/* <li className="nav-item">
 
-                            <Link to="/home" className="nav-link" >
-                                <span>Home</span>
-                            </Link>
-
-                        </li> */}
-
-            {/* {isLoggedIn() ? (
-              <li className="nav-item">
-                <Link to="/logout" className="nav-link">
-                  <span>Logout</span>
-                </Link>
-              </li>
-            ) : (
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  <span>Log In</span>
-                </Link>
-              </li>
-            )} */}
-
-            <NavLogin/>
+<NavLogin />
 
             <li className="nav-item">
               <Link to="/admins/add" className="nav-link">
