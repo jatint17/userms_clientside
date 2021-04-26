@@ -20,7 +20,7 @@ export function loginFail(error) {
 
 }
 
-export function loginAction(data) {
+export function loginAction(data,history) {
     return () => {
         let promise = login(data.username, data.password);
         console.log(data);
@@ -29,6 +29,7 @@ export function loginAction(data) {
             console.log("session id received=" + response.data);
             localStorage.setItem("username", data.username);
             console.log("Local storage username = ", localStorage.getItem("username"));
+            history.push("/home");
             return true;
     
         }).catch(error => {

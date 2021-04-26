@@ -12,15 +12,16 @@ export default function DisplayProductOnRequest() {
     let [currentState, setNewState] = useState(initialState);
 
     const response = useSelector((state) => {
-        return ({ 
+        let respObj= ({ 
             product: state.productById.product, 
             error: state.productById.error 
         });
+       // setNewState({...currentState});
+        return respObj;
+        
     });
 
     let dispatch = useDispatch();
-
-
 
     let submitHandler = (event) => {
         event.preventDefault();
@@ -46,7 +47,7 @@ export default function DisplayProductOnRequest() {
 
         let validationState = { ...currentState.validations, [fieldName]: validationMessage };
 
-        let newState = { ...currentState, [fieldName]: fieldVal, product: undefined, errorMessage: undefined, validations: validationState };
+        let newState = { ...currentState, [fieldName]: fieldVal, validations: validationState };
         setNewState(newState);
     }
 

@@ -11,19 +11,14 @@ function login(username, password) {
     //{withCredentials:true} should be mentioned in every request where there is authentication
     const promise = axios.post(url, data, { withCredentials: true });
     return promise;
-
-    // promise.then(response => {
-    //     console.log("session id received=" + response.data);
-    //     localStorage.setItem("username", username);
-    //     return true;
-
-    // }).catch(error => {
-    //     console.log("login unsuccessful ", error.message);
-    //     return false;
-    // });
-
 }
 
+function  withCredentials(){
+    if(isLoggedIn()){
+        return { withCredentials: true };
+    }
+    return { withCredentials: false };
+}
 
 function getLoginUserName() {
     const username = localStorage.getItem("username");
@@ -39,8 +34,11 @@ function isLoggedIn() {
 function logout() {
     const url = baseUrl + "/logout";
     const promise = axios.get(url);
+    promise.then(response=>{
+        console.log("successfully logged out");
+    })
     localStorage.removeItem("username");
     return promise;
 }
 
-export { login, isLoggedIn, logout, getLoginUserName };
+export { login, isLoggedIn, logout, getLoginUserName , withCredentials};

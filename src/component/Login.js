@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { loginAction } from "../redux/login/loginActions";
@@ -6,23 +6,27 @@ import { login } from "../service/authService";
 import validationConstants from "../validationConstants"
 
 export default function Login() {
+    
 
     let initialState = {
         username: undefined, password: undefined,
+        successMsg: undefined,
         validations: { username: undefined, password: undefined }
+
     };
+    let [currentState, setNewState] = useState(initialState);
 
     let response = useSelector((state) => {
-        return ({
+        const responseObj= ({
+
             successMsg: state.login.successMsg,
             error: state.login.error
         });
+        return responseObj;
     });
 
     let dispatch = useDispatch();
     const history = useHistory();
-
-    let [currentState, setNewState] = useState(initialState);
 
     let usernameRef = React.createRef();
     let passwordRef = React.createRef();
@@ -34,7 +38,7 @@ export default function Login() {
         // const result = login(currentState.username, currentState.password);
         // console.log(result);
         let data = { ...currentState }
-        dispatch(loginAction(data));
+        dispatch(loginAction(data,history));
 
     }
 
@@ -106,7 +110,7 @@ export default function Login() {
             </div>
 
             {response.successMsg ? (
-                history.push("/home")
+               "success"//  history.push("/home")
             ) : ''}
 
             {response.error ? (
