@@ -9,7 +9,7 @@ export default function DisplayCustomerByUsername({ username }) {
     let response = useSelector((state) => {
         return ({
             customer: state.findCustomerByUsername.user,
-            error: state.findCustomerByUsername.error.message
+            error: state.findCustomerByUsername.error
         });
     });
 
@@ -35,7 +35,7 @@ export default function DisplayCustomerByUsername({ username }) {
 
             {response.error ? (
                 <div>
-                    {response.error}
+                    {response.error.response.data}
                 </div>
             ) : ''}
 

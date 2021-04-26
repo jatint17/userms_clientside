@@ -1,5 +1,6 @@
 import store from "../store";
 import displayCustomerByIdConstants from "./displayCustomerByIdConstants";
+import { getCustomerById } from "../../service/CustomerService";
 
 export function displayCustomerByIdSuccess(user) {
   return ({
@@ -10,7 +11,7 @@ export function displayCustomerByIdSuccess(user) {
 }
 
 export function displayCustomerByIdFail(error) {
-  return( {
+  return ({
     user: undefined,
     error: error,
     type: displayCustomerByIdConstants.fail
@@ -19,8 +20,19 @@ export function displayCustomerByIdFail(error) {
 
 export function displayCustomerByIdAction(data) {
   return () => {
-    const mockUser = { customerId:20, username:"customer" };
-    console.log(data);
-    store.dispatch(displayCustomerByIdSuccess(mockUser));
+    console.log("Action method called");
+    console.log("details from submit handler: ", data);
+
+    const promise = getCustomerById(data.customerId);
+    promise.then((response) => {
+      store.dispatch(displayCustomerByIdSuccess(response.data));
+
+      console.log("inside app.js promise.then");
+      console.log("the response getCustomerById is:", response.data);
+    })
+      .catch((error) => {
+        console.log("promise error",error)
+        store.dispatch(displayCustomerByIdFail(error));
+      });
   }
 }

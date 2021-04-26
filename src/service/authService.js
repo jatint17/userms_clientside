@@ -37,8 +37,10 @@ function isLoggedIn() {
 
 
 function logout() {
+    const url = baseUrl + "/logout";
+    const promise = axios.get(url);
     localStorage.removeItem("username");
-
+    return promise;
 }
 
 export { login, isLoggedIn, logout, getLoginUserName };

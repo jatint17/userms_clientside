@@ -10,8 +10,8 @@ export default function Profile() {
         let username = getLoginUserName();
         return (
             <div>
-                <DisplayAdminByUsername username = {username} />
-                <DisplayCustomerByUsername username = {username} />
+                <h2>Profile</h2>
+                Your username is {username} and you are logged in
             </div>
         )
     }

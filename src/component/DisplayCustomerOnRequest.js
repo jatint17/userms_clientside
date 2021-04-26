@@ -6,8 +6,6 @@ import DisplayCustomerDetails from './DisplayCustomerDetails';
 
 export default function DisplayCustomerOnRequest() {
 
-    //let mockCustomer = { customerId: 111, errorMessage: undefined };
-
     let customerIdRef = React.createRef();
 
     let initialState = { customerId: undefined, validations: { customerId: undefined } };
@@ -16,9 +14,9 @@ export default function DisplayCustomerOnRequest() {
     const response = useSelector((state) => {
         return ({
             customer: state.customerById.user,
-            error: state.customerById.error.message
-        })
-    })
+            error: state.customerById.error
+        }); 
+    });
 
     let dispatch = useDispatch();
 
@@ -88,7 +86,7 @@ export default function DisplayCustomerOnRequest() {
 
             {response.error ? (
                 <div className="text-danger">
-                    Error Occurred: {response.error}
+                    Error Occurred: {response.error.message}
                 </div>
             ) : ''}
 

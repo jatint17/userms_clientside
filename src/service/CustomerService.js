@@ -13,7 +13,7 @@ function addCustomer(data) {
 function getCustomerById(customerId) {
     const url = baseUrl + "/c/customers/byid/" + customerId;
     console.log(url);
-    const promise = axios.get(url);
+    const promise = axios.get(url, { withCredentials: true });
     console.log("inside axios method");
     console.log(promise);
     return promise;
@@ -21,7 +21,7 @@ function getCustomerById(customerId) {
 
 function getCustomerByUsername(username) {
     const url = baseUrl + "/c/customers/byusername/" + username;
-    const promise = axios.get(url, { withCredentials=true });
+    const promise = axios.get(url, { withCredentials: true });
     return promise;
 }
 

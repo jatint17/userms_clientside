@@ -6,8 +6,6 @@ import { productByIdAction } from '../redux/productOnRequest/productOnRequestAct
 
 export default function DisplayProductOnRequest() {
 
-    //let mockProduct = { productId: 111, productName: "nike", price: 2870 };
-
     let productIdRef = React.createRef();
 
     let initialState = { productId: undefined, validations: { productId: undefined } };
@@ -92,7 +90,7 @@ export default function DisplayProductOnRequest() {
 
             {response.error ? (
                 <div className="text-danger">
-                    Error Occurred: {response.errorMessage}
+                    Error Occurred: {response.error.message}
                 </div>
             ) : ''}
 
