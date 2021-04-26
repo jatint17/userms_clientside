@@ -51,8 +51,8 @@ export default function AddAdmin() {
   };
 
   const validateUsername = (name) => {
-    if (name.length < 5) {
-      return validationConstants.usernameShorterThanFive;
+    if (name.length < 2) {
+      return validationConstants.usernameShorterThanTwo;
     }
     return undefined;
   };
@@ -75,7 +75,7 @@ export default function AddAdmin() {
   };
 
   return (
-    <div className={commonStyle1.margintop30}>
+    <div>
       <h3>Enter new admin details</h3>
       <form onSubmit={submitHandler}>
         <div className="form-group">
@@ -85,7 +85,7 @@ export default function AddAdmin() {
           <input
             name="username"
             ref={usernameRef}
-            placeholder="(min 5 characters)"
+            placeholder="(min 2 characters)"
             className="form-control"
             onChange={() => setFieldState(usernameRef)}
             required
@@ -122,7 +122,7 @@ export default function AddAdmin() {
         <button className="btn btn-primary"> Create admin</button>
       </form>
       {response.admin ? (
-        <div className={commonStyle1.margintop30}>
+        <div>
           <h4 className="text-success">Admin added</h4>
           <DisplayAdminDetails admin={response.admin} />
         </div>
@@ -134,7 +134,7 @@ export default function AddAdmin() {
         <div className="text-danger">
           Sorry, your request could not be processed
           <br />
-          {response.errorMsg}
+          {response.errorMsg.response.data}
         </div>
       ) : (
         ""

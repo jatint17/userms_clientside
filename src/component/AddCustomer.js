@@ -8,7 +8,7 @@ import DisplayCustomerDetails from "./DisplayCustomerDetails";
 export default function AddCustomer() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  // let mockCustomer = {userId: 1, username:"appu", password:"123456", role: "Customer"};
+
   const initialState = {
     username: undefined,
     password: undefined,
@@ -88,11 +88,9 @@ export default function AddCustomer() {
           />
         </div>
 
-        {currentState.validation ? (
+        {currentState.validation.username ? (
           <div className="text-danger">
             {currentState.validation.username}
-            <br />
-            {currentState.validation.password}
           </div>
         ) : (
           ""
@@ -113,6 +111,11 @@ export default function AddCustomer() {
           />
         </div>
 
+        {currentState.validation.password ? (
+          <div className="text-danger">
+            {currentState.validation.password}
+          </div>) : ''}
+
         <button className="btn btn-primary"> Create customer</button>
 
         {response.customer ? (
@@ -128,7 +131,7 @@ export default function AddCustomer() {
           <div className="text-danger">
             Sorry, your request could not be processed
             <br />
-            {response.errorMsg}
+            {response.errorMsg.message}
           </div>
         ) : (
           ""

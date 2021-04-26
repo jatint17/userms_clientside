@@ -15,7 +15,7 @@ export default function Login() {
     let response = useSelector((state) => {
         return ({
             successMsg: state.login.successMsg,
-            error: state.login.error.message
+            error: state.login.error
         });
     });
 
@@ -111,7 +111,7 @@ export default function Login() {
 
             {response.error ? (
                 <div className="text-danger">
-                    {response.error}
+                    {response.error.message}
                 </div>
             ) : ''}
         </div>
