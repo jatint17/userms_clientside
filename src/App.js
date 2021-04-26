@@ -14,6 +14,7 @@ import DisplayProductOnRequest from './component/DisplayProductOnRequest';
 import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
 import Logout from './component/Logout';
 import Profile from './component/Profile';
+import { Navbar } from 'react-bootstrap';
 
 function App() {
 
@@ -54,7 +55,6 @@ function App() {
                                     <Route exact path="/admins/add" component={AddAdmin} />
                                     <Route exact path="/customers/add" component={AddCustomer} />
                                     <Route exact path="/products/add" component={AddProduct} />
-                                    <Route exact path="/admins/byid" component={DisplayAdminOnRequest} />
                                     <Route exact path="/customers/byid" component={DisplayCustomerOnRequest} />
                                     <Route exact path="/products/byid" component={DisplayProductOnRequest} />
                                     <Route exact path="/profile" component={Profile} />

@@ -31,8 +31,8 @@ export function displayAdminByIdAction(data) {
             console.log("the response getUserById is:", response.data);
         })
             .catch((error) => {
-                console.log(error.message)
-                store.dispatch(displayAdminByIdFail(error));
+                console.log(error.message);
+                store.dispatch(displayAdminByIdFail(error.message));
             });
     }
 }

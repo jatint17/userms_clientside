@@ -13,11 +13,12 @@ export function productByIdSuccess(product) {
 
 export function productByIdFail(error) {
     return ({
-        user: undefined,
+        product : undefined,
         error: error,
         type: productOnRequestConstants.fail
     });
 }
+
 
 export function productByIdAction(data) {
     return () => {
@@ -32,8 +33,8 @@ export function productByIdAction(data) {
           console.log("the response getCustomerById is:", response.data);
         })
           .catch((error) => {
-            console.log("promise error",error)
-            store.dispatch(productByIdFail(error));
+            console.log("promise error",error.message);
+            store.dispatch(productByIdFail(error.message));
           });
       }
 }
