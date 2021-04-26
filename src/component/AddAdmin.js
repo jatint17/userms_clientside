@@ -134,7 +134,7 @@ export default function AddAdmin() {
         <div className="text-danger">
           Sorry, your request could not be processed
           <br />
-          {response.errorMsg.response.data}
+          {response.errorMsg.message}
         </div>
       ) : (
         ""
