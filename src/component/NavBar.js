@@ -65,13 +65,13 @@ export default function NavBar() {
 
             <li className="nav-item">
               <Link to="/customers/byid" className="nav-link">
-                <span>Find Customer By Id</span>
+                <span>Find Customer</span>
               </Link>
             </li>
 
             <li className="nav-item">
               <Link to="/products/byid" className="nav-link">
-                <span>Find Products By Id</span>
+                <span>Find Product</span>
               </Link>
             </li>
 
