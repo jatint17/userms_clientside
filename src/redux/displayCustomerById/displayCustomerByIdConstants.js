@@ -1,5 +1,5 @@
 const displayCustomerByIdConstants = {
-    success: "find_success",
-    fail: "find_fail"
+    success: "find_customerById_success",
+    fail: "find_customerById_fail"
   }
   export default  displayCustomerByIdConstants ;
