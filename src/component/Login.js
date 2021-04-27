@@ -83,7 +83,7 @@ export default function Login() {
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
                         <label>Enter username: </label>
-                        <input type="text" ref={usernameRef} name="username" onChange={() => setFieldVal(usernameRef)} className="form-control" />
+                        <input required type="text" ref={usernameRef} name="username" onChange={() => setFieldVal(usernameRef)} className="form-control" />
                     </div>
 
                     {currentState.validations.username ? (
@@ -94,7 +94,7 @@ export default function Login() {
 
                     <div className="form-group">
                         <label>Enter password: </label>
-                        <input type="password" ref={passwordRef} name="password" onChange={() => setFieldVal(passwordRef)} className="form-control" /><br />
+                        <input required type="password" ref={passwordRef} name="password" onChange={() => setFieldVal(passwordRef)} className="form-control" /><br />
                     </div>
 
                     {currentState.validations.password ? (
