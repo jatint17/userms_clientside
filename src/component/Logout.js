@@ -26,7 +26,7 @@ export default function Logout() {
     }
 
     let history = useHistory();
-    useEffect(doLogout, []);
+    useEffect(doLogout,[]);
 
     return (
         <div>
