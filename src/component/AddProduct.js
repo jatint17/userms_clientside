@@ -87,7 +87,7 @@ export default function AddProduct() {
             name="productName"
             ref={productNameRef}
             placeholder="(min 2 characters)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(productNameRef)}
             required
           />
@@ -102,7 +102,7 @@ export default function AddProduct() {
             type="number"
             ref={priceRef}
             placeholder="(non-negative)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(priceRef)}
             required
           />

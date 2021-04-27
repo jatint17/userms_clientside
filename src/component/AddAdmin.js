@@ -86,7 +86,7 @@ export default function AddAdmin() {
             name="username"
             ref={usernameRef}
             placeholder="(min 2 characters)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(usernameRef)}
             required
           ></input>
@@ -107,7 +107,7 @@ export default function AddAdmin() {
             type="password"
             ref={passwordRef}
             placeholder="(min 4 characters)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(passwordRef)}
             required
           ></input>

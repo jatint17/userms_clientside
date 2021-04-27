@@ -82,7 +82,7 @@ export default function AddCustomer() {
             name="username"
             ref={usernameRef}
             placeholder="(min 5 characters)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(usernameRef)}
             required
           />
@@ -105,7 +105,7 @@ export default function AddCustomer() {
             type="password"
             ref={passwordRef}
             placeholder="(min 4 characters)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(passwordRef)}
             required
           />
