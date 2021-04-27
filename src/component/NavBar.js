@@ -33,7 +33,7 @@ export default function NavBar() {
 
             <li className="nav-item">
               <Link to="/customers/add" className="nav-link">
-                <span>Add Customer</span>
+                <span>Register</span>
               </Link>
             </li>
 

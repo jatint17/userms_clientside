@@ -77,7 +77,8 @@ export default function Login() {
 
     return (
         <div style={{ paddingBottom: '50px' }}>
-            <h3>Login Form</h3>
+            <h2>Login Form</h2>
+            <h6>Please login or register yourself to access the features</h6><br/>
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
