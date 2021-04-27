@@ -6,17 +6,17 @@ import { useEffect } from "react";
 
 export default function NavLogin() {
 
-  let initialState = {loggedIn : undefined};
+  let initialState = {loggedIn : true};
   let [currentState, setNewState] = useState(initialState);
 
-  let fun = ((event) => {
-    setNewState({loggedIn : false });
-  });
 
-  useEffect(fun,[]);
+
+  useEffect(() => {
+    setNewState({loggedIn : false})},[]);
 
 
   return (
+
     <div>
       {isLoggedIn() ? (
         <li className="nav-item">
@@ -27,10 +27,11 @@ export default function NavLogin() {
       ) : (
         <li className="nav-item">
           <Link to="/" className="nav-link">
-            <span>LogIn</span>
+            <span>Login</span>
           </Link>
         </li>
       )}
     </div>
+
   );
 }

@@ -75,19 +75,20 @@ export default function AddProduct() {
   };
 
   return (
-    <div>
+    <div style={{ paddingBottom: '50px' }}>
       <form onSubmit={submitHandler}>
-        <h3>Enter new product details</h3>
+        <h2>Enter new product details</h2>
+        <h6>Add a product</h6><br/>
 
         <div className="form-group">
           <label>
-            <b>Enter product name</b>
+            Enter product name:
           </label>
           <input
             name="productName"
             ref={productNameRef}
             placeholder="(min 2 characters)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(productNameRef)}
             required
           />
@@ -95,18 +96,18 @@ export default function AddProduct() {
 
         <div className="form-group">
           <label>
-            <b>Enter price</b>
+            Enter price:
           </label>
           <input
             name="price"
             type="number"
             ref={priceRef}
             placeholder="(non-negative)"
-            className="form-control"
+            className="form-control  col-md-8"
             onChange={() => setFieldState(priceRef)}
             required
           />
-        </div>
+        </div><br/>
 
         <button className={"btn btn-primary"}>
           Create product

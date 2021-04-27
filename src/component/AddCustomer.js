@@ -56,8 +56,8 @@ export default function AddCustomer() {
   };
 
   const validateUsername = (username) => {
-    if (username.length < 5) {
-      return validationConstants.usernameShorterThanFive;
+    if (username.length < 2) {
+      return validationConstants.usernameShorterThanTwo;
     }
     return undefined;
   };
@@ -70,19 +70,20 @@ export default function AddCustomer() {
   };
 
   return (
-    <div>
+    <div style={{ paddingBottom: '50px' }}>
       <form onSubmit={submitHandler}>
-        <h3>Enter new customer details</h3>
+        <h2>Register yourself</h2>
+        <h6>Sign Up</h6><br/>
 
         <div className="form-group">
           <label>
-            <b>Enter username</b>
+            Enter username:
           </label>
           <input
             name="username"
             ref={usernameRef}
-            placeholder="(min 5 characters)"
-            className="form-control"
+            placeholder="(min 2 characters)"
+            className="form-control  col-md-10"
             onChange={() => setFieldState(usernameRef)}
             required
           />
@@ -98,25 +99,25 @@ export default function AddCustomer() {
 
         <div className="form-group">
           <label>
-            <b>Enter password</b>
+            Enter password:
           </label>
           <input
             name="password"
             type="password"
             ref={passwordRef}
             placeholder="(min 4 characters)"
-            className="form-control"
+            className="form-control  col-md-10"
             onChange={() => setFieldState(passwordRef)}
             required
           />
-        </div>
+        </div><br/>
 
         {currentState.validation.password ? (
           <div className="text-danger">
             {currentState.validation.password}
           </div>) : ''}
 
-        <button className="btn btn-primary"> Create customer</button>
+        <button className="btn btn-primary">Register</button>
 
         {response.customer ? (
           <div className={commonStyle1.margintop30}>

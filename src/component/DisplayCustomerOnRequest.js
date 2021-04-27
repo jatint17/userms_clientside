@@ -62,7 +62,7 @@ export default function DisplayCustomerOnRequest() {
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
                         <label >customerId: </label>
-                        <input type="number" ref={customerIdRef} className="form-control col-md-4" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
+                        <input type="number" ref={customerIdRef} className="form-control  col-md-8" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
 
                         <button className="btn btn-primary">Check</button>
                     </div>

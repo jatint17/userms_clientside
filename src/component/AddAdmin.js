@@ -75,21 +75,17 @@ export default function AddAdmin() {
   };
 
   return (
-    <div>
-      <h3>Enter new admin details</h3>
+    <div style={{ paddingBottom: '50px' }}>
+      <h2>Enter new admin details</h2>
+      <h6>Only an admin can add an admin</h6><br/>
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label>
-            <b>Enter Username</b>
+            Enter Username:
           </label>
           <input
-            name="username"
-            ref={usernameRef}
-            placeholder="(min 2 characters)"
-            className="form-control"
-            onChange={() => setFieldState(usernameRef)}
-            required
-          ></input>
+            name="username" ref={usernameRef} placeholder="(min 2 characters)" className="form-control col-md-10"
+            onChange={() => setFieldState(usernameRef)} required />
         </div>
 
         {currentState.validations.username ? (
@@ -100,17 +96,10 @@ export default function AddAdmin() {
 
         <div className="form-group">
           <label>
-            <b>Enter Password</b>
+            Enter Password:
           </label>
-          <input
-            name="password"
-            type="password"
-            ref={passwordRef}
-            placeholder="(min 4 characters)"
-            className="form-control"
-            onChange={() => setFieldState(passwordRef)}
-            required
-          ></input>
+          <input name="password" type="password" ref={passwordRef} placeholder="(min 4 characters)" className="form-control col-md-10"
+            onChange={() => setFieldState(passwordRef)} required /><br/>
         </div>
 
         {currentState.validations.password ? (

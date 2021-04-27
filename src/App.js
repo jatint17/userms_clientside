@@ -9,46 +9,22 @@ import AddCustomer from './component/AddCustomer';
 import AddAdmin from './component/AddAdmin';
 import Login from './component/Login';
 import Home from './component/Home';
-import DisplayAdminOnRequest from './component/DisplayAdminOnRequest';
 import DisplayProductOnRequest from './component/DisplayProductOnRequest';
 import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
 import Logout from './component/Logout';
 import Profile from './component/Profile';
-import { Navbar } from 'react-bootstrap';
+import lock from './lock.png';
 
 function App() {
-
-    // const id=1;
-    // const promise = getUserById(id);
-    // promise.then((response) => {
-    //     console.log("inside app.js promise.then");
-    //     console.log("the response getUserById is:", response.data);
-    // })
-    // .catch(error => console.log(error.message));
-
-    // const promise = checkCredentials("admin","admin");
-    // promise.then((response) => {
-    //     console.log("inside app.js promise.then");
-    //     console.log("the response checkCredentials is:", response.data);
-    // })
-    // .catch(error => console.log(error.message));
-
-    // const promise = findByUsername("admin");
-    // promise.then((response) => {
-    //     console.log("inside app.js findByUsername promise.then");
-    //     console.log("the response is:", response.data);
-    // })
-    // .catch(error => console.log(error.message));
-
 
     return (
         <div className={commonStyle2.appbg}>
             <Provider store={store}>
                 <Router>
                     <NavBar />
-                    <div className="container" style={{ marginTop:'50px' }}>
+                    <div className="container" style={{ marginTop: '50px' }}>
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-6 col-sm-6">
                                 <Switch>
                                     <Route exact path="/" component={Login} />
                                     <Route exact path="/home" component={Home} />
@@ -61,6 +37,17 @@ function App() {
                                     <Route exact path="/logout" component={Logout} />
                                 </Switch>
                             </div>
+                            <div className="col-md-1 col-sm-1"></div>
+                            <div className="col-md-2 col-sm-2">
+                                <img src={lock} style={{ height: '270px', paddingTop: '50px' }} />
+                            </div>
+                            <div className="col-xs-1"></div>
+
+                            <div className="col-md-2 col-sm-2">
+                                <img src={"https://lh3.googleusercontent.com/proxy/beOFv9WudDPUY_UE2nRHkWaMQqjLcbLW7mUjV4niSCOdNMCCPQepu-efO-tBfDqCTMls2Cnv-VD0c2xhYBIa8XgcP7O4kDobFfWK6sKQmhes_xQ_-IRC"} style={{ height: '300px', paddingTop: '20px' }} />
+
+                            </div>
+
                         </div>
                     </div>
                 </Router>
