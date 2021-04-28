@@ -43,7 +43,7 @@ function App() {
                             <div className="col-xs-1"></div>
 
                             <div className="col-md-2 col-sm-2">
-                                <img src={unlock} style={{ height: '270px', paddingTop: '50px' }} />
+                                <img src={unlock} style={{ height: '270px', width: '230px', paddingTop: '50px' }} />
 
                             </div>
 
