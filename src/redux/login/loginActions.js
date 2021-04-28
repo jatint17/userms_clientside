@@ -1,6 +1,6 @@
 import loginConstants from "./loginConstants";
 import store from "../store";
-import { login } from "../../service/authService";
+import { login, logout } from "../../service/authService";
 
 
 export function loginSuccess(successMsg) {
@@ -20,6 +20,17 @@ export function loginFail(error) {
 
 }
 
+export function logoutAction(history){
+    return () => {
+
+
+        store.dispatch(loginFail("logged out"));
+        history.push("/");
+        logout();
+
+    };
+}
+
 export function loginAction(data,history) {
     return () => {
         let promise = login(data.username, data.password);
@@ -30,6 +41,7 @@ export function loginAction(data,history) {
             localStorage.setItem("username", data.username);
             console.log("Local storage username = ", localStorage.getItem("username"));
             history.push("/home");
+
             return true;
     
         }).catch(error => {
@@ -40,4 +52,6 @@ export function loginAction(data,history) {
   
         
     }
+
+
 }
