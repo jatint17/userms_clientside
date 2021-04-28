@@ -57,11 +57,12 @@ export default function DisplayCustomerOnRequest() {
 
     return (
         <div>
-            <h3>Find Customer Details By Id</h3>
+            <h2>Find Customer Details By Id</h2>
+            <h6>Only logged in users can use this feature</h6><br/>
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label >customerId: </label>
+                        <label >Customer ID: </label>
                         <input type="number" ref={customerIdRef} className="form-control  col-md-8" name="customerId" onChange={() => setFieldVal(customerIdRef)} /><br />
 
                         <button className="btn btn-primary">Check</button>

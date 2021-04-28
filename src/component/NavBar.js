@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { isLoggedIn } from "../service/authService";
 import NavLogin from "./NavLogin";
-import lock from "../lock.png"
 
 export default function NavBar() {
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,7 +23,21 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
 
-            <NavLogin arg = {isLoggedIn()}/>
+            {/* {isLoggedIn === true ? (
+              <li className="nav-item">
+                <Link to="/logout" className="nav-link">
+                  <span>Logout</span>
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Link to="/" className="nav-link">
+                  <span>Login</span>
+                </Link>
+              </li>
+            )} */}
+
+            <NavLogin />
 
             <li className="nav-item">
               <Link to="/admins/add" className="nav-link">
@@ -33,7 +47,7 @@ export default function NavBar() {
 
             <li className="nav-item">
               <Link to="/customers/add" className="nav-link">
-                <span>Register</span>
+                <span>Add Customer</span>
               </Link>
             </li>
 

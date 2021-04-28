@@ -4,21 +4,21 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 
-export default function NavLogin() {
+export default function NavLogin({isLoggedIn}) {
 
-  let initialState = {loggedIn : true};
-  let [currentState, setNewState] = useState(initialState);
+  // let initialState = {loggedIn : undefined};
+  // let [currentState, setNewState] = useState(initialState);
 
 
 
-  useEffect(() => {
-    setNewState({loggedIn : false})},[]);
+  // useEffect(() => {
+  //   setNewState({loggedIn : isLoggedIn})},[]);
 
 
   return (
 
     <div>
-      {isLoggedIn() ? (
+      {isLoggedIn ? (
         <li className="nav-item">
           <Link to="/logout" className="nav-link">
             <span>Logout</span>

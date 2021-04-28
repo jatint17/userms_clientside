@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { loginAction } from "../redux/login/loginActions";
+import { isLoggedIn } from "../service/authService";
 import validationConstants from "../validationConstants"
+import NavBar from "./NavBar";
 import NavLogin from "./NavLogin";
 
 export default function Login() {
@@ -12,16 +14,15 @@ export default function Login() {
         username: undefined, password: undefined,
         successMsg: undefined,
         validations: { username: undefined, password: undefined }
-
     };
     let [currentState, setNewState] = useState(initialState);
 
     let response = useSelector((state) => {
         const responseObj = ({
-
             successMsg: state.login.successMsg,
             error: state.login.error
         });
+        
         return responseObj;
     });
 
@@ -33,8 +34,6 @@ export default function Login() {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(response.user);
-
         let data = { ...currentState }
         dispatch(loginAction(data, history));
 
@@ -108,13 +107,17 @@ export default function Login() {
 
             </div>
 
-            {response.successMsg ? (''
-
+            {response.successMsg ? (
+                    
+                    <div>
+                    <NavLogin isLoggedIn={true} />
+                    </div>
             ) : ''}
 
             {response.error ? (
                 <div className="text-danger">
                     {response.error.message}
+                    
                 </div>
             ) : ''}
 

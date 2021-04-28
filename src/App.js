@@ -14,6 +14,7 @@ import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
 import Logout from './component/Logout';
 import Profile from './component/Profile';
 import lock from './lock.png';
+import { isLoggedIn } from './service/authService';
 
 function App() {
 
