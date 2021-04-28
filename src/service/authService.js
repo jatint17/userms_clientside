@@ -9,7 +9,7 @@ function login(username, password) {
     let data = "username=" + username + "&password=" + password;
 
     //{withCredentials:true} should be mentioned in every request where there is authentication
-    const promise = axios.post(url, data, { withCredentials: true });
+    const promise = axios.post(url, data,withCredentials());
     return promise;
 }
 
@@ -33,7 +33,7 @@ function isLoggedIn() {
 
 function logout() {
     const url = baseUrl + "/logout";
-    const promise = axios.get(url);
+    const promise = axios.get(url,withCredentials());
     promise.then(response=>{
         console.log("successfully logged out");
     })

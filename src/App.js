@@ -11,9 +11,9 @@ import Login from './component/Login';
 import Home from './component/Home';
 import DisplayProductOnRequest from './component/DisplayProductOnRequest';
 import DisplayCustomerOnRequest from './component/DisplayCustomerOnRequest';
-import Logout from './component/Logout';
 import Profile from './component/Profile';
 import lock from './lock.png';
+import unlock from './unlock.png';
 
 function App() {
 
@@ -34,7 +34,6 @@ function App() {
                                     <Route exact path="/customers/byid" component={DisplayCustomerOnRequest} />
                                     <Route exact path="/products/byid" component={DisplayProductOnRequest} />
                                     <Route exact path="/profile" component={Profile} />
-                                    <Route exact path="/logout" component={Logout} />
                                 </Switch>
                             </div>
                             <div className="col-md-1 col-sm-1"></div>
@@ -44,7 +43,7 @@ function App() {
                             <div className="col-xs-1"></div>
 
                             <div className="col-md-2 col-sm-2">
-                                <img src={"https://lh3.googleusercontent.com/proxy/beOFv9WudDPUY_UE2nRHkWaMQqjLcbLW7mUjV4niSCOdNMCCPQepu-efO-tBfDqCTMls2Cnv-VD0c2xhYBIa8XgcP7O4kDobFfWK6sKQmhes_xQ_-IRC"} style={{ height: '300px', paddingTop: '20px' }} />
+                                <img src={unlock} style={{ height: '270px', paddingTop: '50px' }} />
 
                             </div>
 

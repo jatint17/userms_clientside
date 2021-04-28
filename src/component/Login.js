@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { loginAction } from "../redux/login/loginActions";
+import { isLoggedIn } from "../service/authService";
 import validationConstants from "../validationConstants"
 import NavLogin from "./NavLogin";
 
@@ -14,6 +15,7 @@ export default function Login() {
         validations: { username: undefined, password: undefined }
 
     };
+
     let [currentState, setNewState] = useState(initialState);
 
     let response = useSelector((state) => {
@@ -22,6 +24,7 @@ export default function Login() {
             successMsg: state.login.successMsg,
             error: state.login.error
         });
+
         return responseObj;
     });
 
@@ -108,7 +111,11 @@ export default function Login() {
 
             </div>
 
-            {response.successMsg ? (''
+            {response.successMsg ? (
+                
+                ""
+                //setNewState({...currentState,isLoggedInStatus:true})
+                //console.log("new state has been set", currentState)
 
             ) : ''}
 
