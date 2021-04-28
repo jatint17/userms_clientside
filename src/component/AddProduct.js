@@ -77,7 +77,7 @@ export default function AddProduct() {
     <div style={{ paddingBottom: '50px' }}>
       <form onSubmit={submitHandler}>
         <h2>Enter new product details</h2>
-        <h6>Add a product</h6><br/>
+        <h6>Only an admin can add a product</h6><br/>
 
         <div className="form-group">
           <label>
@@ -108,9 +108,7 @@ export default function AddProduct() {
           />
         </div><br/>
 
-        <button className={"btn btn-primary"}>
-          Create product
-        </button>
+        <button className={"btn btn-primary"}>Create product</button>
 
         {currentState.validations ? (
           <div>

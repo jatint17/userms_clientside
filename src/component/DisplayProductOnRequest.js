@@ -60,8 +60,9 @@ export default function DisplayProductOnRequest() {
 
 
     return (
-        <div>
-            <h3>Find Product Details By Id</h3>
+        <div style={{ paddingBottom: '50px' }}>
+            <h2>Find Product Details By Id</h2>
+            <h6>Any logged in user can view a product</h6><br />
             <div>
                 <form onSubmit={submitHandler}>
                     <div className="form-group">
