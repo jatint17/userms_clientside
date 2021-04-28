@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import validationConstants from "../validationConstants";
 import DisplayProductDetails from "./DisplayProductDetails";
-import commonStyle1 from "./css/commonStyle1.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../redux/addProduct/addProductActions";
 
