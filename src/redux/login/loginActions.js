@@ -23,18 +23,20 @@ export function loginFail(error) {
 export function logoutAction(history){
     return () => {
 
-
         store.dispatch(loginFail("logged out"));
-        history.push("/");
         logout();
+        history.push("/");
 
     };
 }
 
 export function loginAction(data,history) {
     return () => {
+
         let promise = login(data.username, data.password);
+        
         console.log(data);
+        
         promise.then(response => {
             store.dispatch(loginSuccess(response.data));
             console.log("session id received=" + response.data);

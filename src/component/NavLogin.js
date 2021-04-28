@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../redux/login/loginActions";
 
 
-export default function NavLogin({loggedIn}) {
+export default function NavLogin() {
 
  
   let response = useSelector((state) => {
     const responseObj = ({
-
         successMsg: state.login.successMsg,
         error: state.login.error
     });

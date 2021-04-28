@@ -7,9 +7,11 @@ import validationConstants from "../validationConstants"
 export default function Login() {
 
 
+    let usernameRef = React.createRef();
+    let passwordRef = React.createRef();
+
     let initialState = {
         username: undefined, password: undefined,
-        successMsg: undefined,
         validations: { username: undefined, password: undefined }
     };
 
@@ -26,14 +28,10 @@ export default function Login() {
     let dispatch = useDispatch();
     const history = useHistory();
 
-    let usernameRef = React.createRef();
-    let passwordRef = React.createRef();
-
     const submitHandler = (event) => {
         event.preventDefault();
-        let data = { ...currentState }
+        let data = { ...currentState };
         dispatch(loginAction(data, history));
-
     }
 
     let setFieldVal = (ref) => {

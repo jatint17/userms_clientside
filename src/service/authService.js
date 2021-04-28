@@ -9,7 +9,7 @@ function login(username, password) {
     let data = "username=" + username + "&password=" + password;
 
     //{withCredentials:true} should be mentioned in every request where there is authentication
-    const promise = axios.post(url, data,withCredentials());
+    const promise = axios.post(url, data, {withCredentials:true});
     return promise;
 }
 

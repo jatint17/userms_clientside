@@ -1,6 +1,7 @@
 import { isLoggedIn, getLoginUserName } from "../service/authService";
 import DisplayAdminByUsername from "./DisplayAdminByUsername";
 import DisplayCustomerByUsername from "./DisplayCustomerByUsername";
+import Login from "./Login";
 
 export default function Profile() {
 
@@ -16,6 +17,9 @@ export default function Profile() {
         )
     }
     return (
-        <div>Please log in</div>
+        <div>
+            <h6 style={{color:'#C36226'}}>Please log in to view your profile.</h6>
+            <Login />
+        </div>
     );
 }
