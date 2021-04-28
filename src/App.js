@@ -38,12 +38,12 @@ function App() {
                             </div>
                             <div className="col-md-1 col-sm-1"></div>
                             <div className="col-md-2 col-sm-2">
-                                <img src={lock} style={{ height: '270px', paddingTop: '50px' }} />
+                                <img src={lock} style={{ height: '230px', paddingTop: '10px' }} />
                             </div>
                             <div className="col-xs-1"></div>
 
                             <div className="col-md-2 col-sm-2">
-                                <img src={unlock} style={{ height: '270px', width: '240px', paddingTop: '50px' }} />
+                                <img src={unlock} style={{ height: '230px', width: '240px', paddingTop: '10px' }} />
 
                             </div>
 
