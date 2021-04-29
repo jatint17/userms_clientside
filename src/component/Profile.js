@@ -2,6 +2,10 @@ import { isLoggedIn, getLoginUserName } from "../service/authService";
 import profile from '../profile.png'
 import Login from "./Login";
 
+
+/*
+* the user can se it's details by using this component
+*/
 export default function Profile() {
 
     const result = isLoggedIn();
