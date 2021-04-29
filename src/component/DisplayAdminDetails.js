@@ -1,4 +1,6 @@
- /**This component displays the detail of Admin */
+ /**
+  * This component displays the details of Admin
+ */
 export default function DisplayAdminDetails({admin}){ 
     
     let {adminId, username}=admin;
