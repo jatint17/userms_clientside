@@ -3,6 +3,11 @@ import { withCredentials } from './authService';
 
 const baseUrl = "http://localhost:8585"
 
+/**
+ * function to send request to the addAdmin end point in adminController of onlineshoppingms
+ * @param data 
+ * @returns promise
+ */
 function addAdmin(data) {
     const url = baseUrl + "/a/admins/add";
     let requestData = { username: data.username, password: data.password };
@@ -10,6 +15,11 @@ function addAdmin(data) {
     return promise;
 }
 
+/**
+ * function to send request to the findById end point in adminController of onlineshoppingms
+ * @param adminId 
+ * @returns promise
+ */
 function getAdminById(adminId) {
     const url = baseUrl + "/a/admins/byid/" + adminId;
     console.log(url);

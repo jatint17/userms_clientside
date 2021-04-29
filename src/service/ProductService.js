@@ -4,6 +4,11 @@ import { withCredentials } from './authService';
 
 const baseUrl = "http://localhost:8585"
 
+/**
+ * function to send request to the addProduct end point in ProductRestController of onlineshoppingms
+ * @param data 
+ * @returns promise
+ */
 function addProduct(data) {
     const url = baseUrl + "/a/products/add";
     let requestData = { productName: data.productName, price: data.price };
@@ -11,6 +16,11 @@ function addProduct(data) {
     return promise;
 }
 
+/**
+ * function to send request to the findById end point in ProductRestController of onlineshoppingms
+ * @param productId 
+ * @returns promise
+ */
 function getProductById(productId) {
     const url = baseUrl + "/c/products/byid/" + productId;
     console.log(url);

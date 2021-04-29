@@ -25,12 +25,19 @@ function getLoginUserName() {
     return username;
 }
 
+/**
+ * function to check if the user is currently logged in or not
+ * @returns boolean
+ */
 function isLoggedIn() {
     const username = getLoginUserName();
     return (username ? true : false);
 }
 
-
+/**
+ * function to send request to logout end point in AppController of onlineshoppingms
+ * @returns promise
+ */
 function logout() {
     const url = baseUrl + "/logout";
     localStorage.removeItem("username");
