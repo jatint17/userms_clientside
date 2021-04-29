@@ -1,5 +1,5 @@
-export default function DisplayAdminDetails({admin}){
-     // This component display the details of Admin
+ /**This component displays the detail of Admin */
+export default function DisplayAdminDetails({admin}){ 
     
     let {adminId, username}=admin;
     return(

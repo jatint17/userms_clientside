@@ -3,7 +3,7 @@ import validationMessage from '../validationMessage';
 import DisplayAdminDetails from './DisplayAdminDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { displayAdminByIdAction } from '../redux/displayAdminById/displayAdminByIdActions'
-//user enters the adminId in the form to view the details of the admin corresponding to the adminId  
+/**user enters the adminId in the form to view the details of the admin corresponding to the adminId  */
 
 export default function DisplayAdminOnRequest() {
 
