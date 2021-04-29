@@ -6,15 +6,14 @@ import { addAdminAction } from "../redux/addAdmin/addAdminActions";
 import DisplayAdminDetails from "./DisplayAdminDetails";
 import { isLoggedIn } from "../service/authService";
 
+/**
+ * component for adding an admin(accessible only by an admin);
+ * inputs new username and password from the user and dispatches the addAdmin action 
+ */
+
 export default function AddAdmin() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  /* let mockAdmin = {
-    userId: 1,
-    username: "appu",
-    password: "123456",
-    role: "Customer",
-  };*/
   const initialState = {
     username: undefined,
     password: undefined,

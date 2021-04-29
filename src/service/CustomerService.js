@@ -20,10 +20,4 @@ function getCustomerById(customerId) {
     return promise;
 }
 
-function getCustomerByUsername(username) {
-    const url = baseUrl + "/c/customers/byusername/" + username;
-    const promise = axios.get(url, withCredentials());
-    return promise;
-}
-
-export { getCustomerById, addCustomer, getCustomerByUsername };
+export { getCustomerById, addCustomer};

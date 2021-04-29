@@ -7,8 +7,6 @@ import addProductReducer from "./addProduct/addProductReducer";
 import productOnRequestReducer from "./productOnRequest/productOnRequestReducer";
 import displayAdminByIdReducer from "./displayAdminById/displayAdminByIdReducer";
 import loginReducer from "./login/loginReducer";
-import displayCustomerByUsernameReducer from "./displayCustomerByUsername/displayCustomerByUsernameReducer";
-import displayAdminByUsernameReducer from "./displayAdminByUsername/displayAdminByUsernameReducer";
 import displayCustomerByIdReducer from "./displayCustomerById/displayCustomerByIdReducer";
 
 const store = createStore(
@@ -19,9 +17,7 @@ const store = createStore(
     productById: productOnRequestReducer,
     adminById: displayAdminByIdReducer,
     customerById: displayCustomerByIdReducer,
-    login: loginReducer,
-    findAdminByUsername: displayAdminByUsernameReducer,
-    findCustomerByUsername: displayCustomerByUsernameReducer
+    login: loginReducer
 
   }),
   composeWithDevTools(applyMiddleware(thunk))
