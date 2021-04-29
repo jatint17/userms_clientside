@@ -6,15 +6,12 @@ import { addAdminAction } from "../redux/addAdmin/addAdminActions";
 import DisplayAdminDetails from "./DisplayAdminDetails";
 import { isLoggedIn } from "../service/authService";
 
+
 export default function AddAdmin() {
+  
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
-  /* let mockAdmin = {
-    userId: 1,
-    username: "appu",
-    password: "123456",
-    role: "Customer",
-  };*/
+  
   const initialState = {
     username: undefined,
     password: undefined,
@@ -29,9 +26,6 @@ export default function AddAdmin() {
   const [currentState, setNewState] = useState(initialState);
 
   const dispatch = useDispatch();
-
-  console.log(isLoggedIn());
-  console.log(localStorage.getItem("username"));
 
   const setFieldState = (reference) => {
     const fieldName = reference.current.name;

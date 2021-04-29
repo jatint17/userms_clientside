@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
 
-
   let response = useSelector((state) => {
     const responseObj = ({
 
@@ -14,7 +13,6 @@ export default function NavBar() {
 
     return responseObj;
   });
-
 
   return (
     <div>
