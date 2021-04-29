@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import NavLogin from "./NavLogin";
 import { useSelector } from "react-redux";
 
-export default function NavBar() {
+/**
+ * displays the navigation bar containing all the links to the components in the app
+ */
 
+export default function NavBar() {
 
   let response = useSelector((state) => {
     const responseObj = ({
@@ -14,7 +17,6 @@ export default function NavBar() {
 
     return responseObj;
   });
-
 
   return (
     <div>

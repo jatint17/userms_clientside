@@ -1,3 +1,8 @@
+
+/**
+ * The home page, renders when a user logs in
+ */
+
 export default function Home() {
 
     return (

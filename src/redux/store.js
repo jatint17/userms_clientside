@@ -18,7 +18,6 @@ const store = createStore(
     adminById: displayAdminByIdReducer,
     customerById: displayCustomerByIdReducer,
     login: loginReducer
-
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

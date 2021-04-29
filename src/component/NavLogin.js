@@ -2,7 +2,9 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../redux/login/loginActions";
 
-
+/**
+ * A component that changes the Login link to Logout link when the user logs in
+ */
 export default function NavLogin() {
 
  

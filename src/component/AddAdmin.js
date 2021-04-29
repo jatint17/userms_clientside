@@ -10,8 +10,8 @@ import { isLoggedIn } from "../service/authService";
  * component for adding an admin(accessible only by an admin);
  * inputs new username and password from the user and dispatches the addAdmin action 
  */
-
 export default function AddAdmin() {
+  
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
   const initialState = {
@@ -28,9 +28,6 @@ export default function AddAdmin() {
   const [currentState, setNewState] = useState(initialState);
 
   const dispatch = useDispatch();
-
-  console.log(isLoggedIn());
-  console.log(localStorage.getItem("username"));
 
   const setFieldState = (reference) => {
     const fieldName = reference.current.name;
