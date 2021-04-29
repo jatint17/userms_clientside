@@ -19,10 +19,4 @@ function getAdminById(adminId) {
     return promise;
 }
 
-function findByUsername(username) {
-    const url = baseUrl + "/a/admins/byusername/" + username;
-    const promise = axios.get(url,withCredentials());
-    return promise;
-}
-
-export { getAdminById, findByUsername, addAdmin };
+export { getAdminById, addAdmin };

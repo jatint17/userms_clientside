@@ -7,7 +7,6 @@ import validationConstants from "../validationConstants"
 /**
  * A login form, in which user enters username and password which logs the user into the app.
  */
-
 export default function Login() {
 
 
