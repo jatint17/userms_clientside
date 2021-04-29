@@ -4,6 +4,10 @@ import DisplayProductDetails from './DisplayProductDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { productByIdAction } from '../redux/productOnRequest/productOnRequestActions';
 
+/** 
+ * user enters the product id in the form to view the details of the product corresponding to the product id 
+ */ 
+
 export default function DisplayProductOnRequest() {
 
     let productIdRef = React.createRef();

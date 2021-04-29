@@ -1,4 +1,8 @@
-export default function DisplayAdminDetails({admin}){
+ /**
+  * This component displays the details of Admin
+ */
+export default function DisplayAdminDetails({admin}){ 
+    
     let {adminId, username}=admin;
     return(
         <div>

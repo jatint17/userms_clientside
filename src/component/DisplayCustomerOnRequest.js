@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { displayCustomerByIdAction } from '../redux/displayCustomerById/displayCustomerByIdActions';
 import validationMessage from '../validationMessage';
 import DisplayCustomerDetails from './DisplayCustomerDetails';
+/**
+ * user enters the customerId in the form to view the details of the customer corresponding to the customerId 
+ */
 
 export default function DisplayCustomerOnRequest() {
 
