@@ -1,4 +1,7 @@
 export default function DisplayProductDetails({product}){
+    
+  //This component display the details of Product
+  
     let {productId, productName, price}=product;
     return(
         <div>
