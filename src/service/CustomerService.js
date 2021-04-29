@@ -29,5 +29,5 @@ function getCustomerById(customerId) {
     console.log(promise);
     return promise;
 }
+export { getCustomerById, addCustomer};
 
-export { getCustomerById, addCustomer };

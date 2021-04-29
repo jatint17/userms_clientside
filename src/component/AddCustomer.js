@@ -5,6 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCustomerAction } from "../redux/addCustomer/addCustomerActions";
 import DisplayCustomerDetails from "./DisplayCustomerDetails";
 
+/**
+ * component for adding a new customer(accessible by anyone irrespective of being logged in or not);
+ * inputs new username and password from the user and dispatches the addCustomer action 
+ */
+
 export default function AddCustomer() {
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();

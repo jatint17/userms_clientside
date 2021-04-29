@@ -4,6 +4,11 @@ import DisplayProductDetails from "./DisplayProductDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../redux/addProduct/addProductActions";
 
+/**
+ * component for adding a product(accessible only by an admin);
+ * inputs new product's name and price from the user and dispatches the addProduct action
+ */
+
 export default function AddProduct() {
   const productNameRef = React.createRef();
   const priceRef = React.createRef();
