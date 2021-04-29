@@ -1,6 +1,5 @@
 import { isLoggedIn, getLoginUserName } from "../service/authService";
-import DisplayAdminByUsername from "./DisplayAdminByUsername";
-import DisplayCustomerByUsername from "./DisplayCustomerByUsername";
+import profile from '../profile.png'
 import Login from "./Login";
 
 export default function Profile() {
@@ -12,6 +11,7 @@ export default function Profile() {
         return (
             <div>
                 <h2>Profile</h2>
+                <img src={profile} style={{ height: '50px', paddingRight:'10px'}}/>
                 Your username is <b>{username}</b> and you are logged in
             </div>
         )

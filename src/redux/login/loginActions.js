@@ -24,7 +24,12 @@ export function logoutAction(history){
     return () => {
 
         store.dispatch(loginFail("logged out"));
-        logout();
+        let promise = logout();
+
+        promise.then(response=>{
+            console.log(response.data);
+        })
+
         history.push("/");
 
     };

@@ -33,11 +33,10 @@ function isLoggedIn() {
 
 function logout() {
     const url = baseUrl + "/logout";
-    const promise = axios.get(url,withCredentials());
-    promise.then(response=>{
-        console.log("successfully logged out");
-    })
     localStorage.removeItem("username");
+
+    const promise = axios.get(url, withCredentials());
+    
     return promise;
 }
 

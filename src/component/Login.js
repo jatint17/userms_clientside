@@ -56,7 +56,7 @@ export default function Login() {
 
     const validateUsername = (username) => {
         if (username.length < 2) {
-            return validationConstants.usernameShorterThanFive;
+            return validationConstants.usernameShorterThanTwo;
         }
         return undefined;
     }

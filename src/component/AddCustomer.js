@@ -72,8 +72,8 @@ export default function AddCustomer() {
   return (
     <div style={{ paddingBottom: '50px' }}>
       <form onSubmit={submitHandler}>
-        <h2>Register yourself</h2>
-        <h6>Sign Up</h6><br/>
+        <h2>Add a customer</h2>
+        <h6>Anyone can add a customer</h6><br/>
 
         <div className="form-group">
           <label>

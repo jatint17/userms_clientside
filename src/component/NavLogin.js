@@ -29,8 +29,6 @@ const dispatch = useDispatch();
       {response.successMsg ? (
         <li className="nav-item">
           <button onClick={logoutHandler} className="nav-link btn btn-link" >
-
-
             <span>Logout</span>
           </button>
         </li>

@@ -35,13 +35,7 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
 
-            {
-              response.successMsg ? (
-                <NavLogin loggedIn={true} />
-              ) :
-              (
-                <NavLogin loggedIn={false} />
-              )}
+            <NavLogin />
 
             <li className="nav-item">
               <Link to="/admins/add" className="nav-link">
