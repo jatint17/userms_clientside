@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import validationConstants from "../validationConstants";
 import DisplayProductDetails from "./DisplayProductDetails";
-import commonStyle1 from "./css/commonStyle1.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../redux/addProduct/addProductActions";
 
@@ -78,7 +77,7 @@ export default function AddProduct() {
     <div style={{ paddingBottom: '50px' }}>
       <form onSubmit={submitHandler}>
         <h2>Enter new product details</h2>
-        <h6>Add a product</h6><br/>
+        <h6>Only an admin can add a product</h6><br/>
 
         <div className="form-group">
           <label>
@@ -109,9 +108,7 @@ export default function AddProduct() {
           />
         </div><br/>
 
-        <button className={"btn btn-primary"}>
-          Create product
-        </button>
+        <button className={"btn btn-primary"}>Create product</button>
 
         {currentState.validations ? (
           <div>

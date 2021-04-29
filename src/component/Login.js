@@ -1,46 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { loginAction } from "../redux/login/loginActions";
-import { isLoggedIn } from "../service/authService";
 import validationConstants from "../validationConstants"
-import NavLogin from "./NavLogin";
 
 export default function Login() {
 
 
+    let usernameRef = React.createRef();
+    let passwordRef = React.createRef();
+
     let initialState = {
         username: undefined, password: undefined,
-        successMsg: undefined,
         validations: { username: undefined, password: undefined }
-
     };
 
     let [currentState, setNewState] = useState(initialState);
 
     let response = useSelector((state) => {
         const responseObj = ({
-
             successMsg: state.login.successMsg,
             error: state.login.error
         });
-
         return responseObj;
     });
 
     let dispatch = useDispatch();
     const history = useHistory();
 
-    let usernameRef = React.createRef();
-    let passwordRef = React.createRef();
-
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(response.user);
-
-        let data = { ...currentState }
+        let data = { ...currentState };
         dispatch(loginAction(data, history));
-
     }
 
     let setFieldVal = (ref) => {
@@ -65,7 +56,7 @@ export default function Login() {
 
     const validateUsername = (username) => {
         if (username.length < 2) {
-            return validationConstants.usernameShorterThanFive;
+            return validationConstants.usernameShorterThanTwo;
         }
         return undefined;
     }
@@ -111,17 +102,13 @@ export default function Login() {
 
             </div>
 
-            {response.successMsg ? (
-                
-                ""
-                //setNewState({...currentState,isLoggedInStatus:true})
-                //console.log("new state has been set", currentState)
-
+            {response.successMsg ? (''
             ) : ''}
 
             {response.error ? (
                 <div className="text-danger">
                     {response.error.message}
+                    
                 </div>
             ) : ''}
 

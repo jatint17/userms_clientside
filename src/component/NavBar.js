@@ -1,22 +1,19 @@
 import { Link } from "react-router-dom";
-import { isLoggedIn } from "../service/authService";
 import NavLogin from "./NavLogin";
-import lock from "../lock.png"
 import { useSelector } from "react-redux";
 
 export default function NavBar() {
 
-  
-  
+
   let response = useSelector((state) => {
     const responseObj = ({
 
-        successMsg: state.login.successMsg,
-        error: state.login.error
+      successMsg: state.login.successMsg,
+      error: state.login.error
     });
 
     return responseObj;
-});
+  });
 
 
   return (
@@ -38,12 +35,7 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
 
-           { 
-              response.successMsg?(
-                <NavLogin loggedIn={true}/>
-              ):
-              <NavLogin loggedIn={false}/>
-            }
+            <NavLogin />
 
             <li className="nav-item">
               <Link to="/admins/add" className="nav-link">

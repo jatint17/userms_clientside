@@ -1,17 +1,13 @@
-import { isLoggedIn } from "../service/authService";
 import { Link, useHistory } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../redux/login/loginActions";
 
 
-export default function NavLogin({loggedIn}) {
+export default function NavLogin() {
 
  
   let response = useSelector((state) => {
     const responseObj = ({
-
         successMsg: state.login.successMsg,
         error: state.login.error
     });
@@ -33,8 +29,6 @@ const dispatch = useDispatch();
       {response.successMsg ? (
         <li className="nav-item">
           <button onClick={logoutHandler} className="nav-link btn btn-link" >
-
-
             <span>Logout</span>
           </button>
         </li>

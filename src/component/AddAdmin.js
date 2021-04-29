@@ -4,6 +4,7 @@ import commonStyle1 from "./css/commonStyle1.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addAdminAction } from "../redux/addAdmin/addAdminActions";
 import DisplayAdminDetails from "./DisplayAdminDetails";
+import { isLoggedIn } from "../service/authService";
 
 export default function AddAdmin() {
   const usernameRef = React.createRef();
@@ -28,6 +29,9 @@ export default function AddAdmin() {
   const [currentState, setNewState] = useState(initialState);
 
   const dispatch = useDispatch();
+
+  console.log(isLoggedIn());
+  console.log(localStorage.getItem("username"));
 
   const setFieldState = (reference) => {
     const fieldName = reference.current.name;
