@@ -51,7 +51,7 @@ export default function AddAdmin() {
   };
 
   const validateUsername = (name) => {
-    if (name.length < 2) {
+    if (name.length < 0) {
       return validationConstants.usernameShorterThanTwo;
     }
     return undefined;
@@ -85,7 +85,7 @@ export default function AddAdmin() {
           </label>
           <input
             name="username" ref={usernameRef} placeholder="(min 2 characters)" className="form-control col-md-10"
-            onChange={() => setFieldState(usernameRef)} required />
+            onChange={() => setFieldState(usernameRef)}  />
         </div>
 
         {currentState.validations.username ? (
@@ -123,7 +123,7 @@ export default function AddAdmin() {
         <div className="text-danger">
           Sorry, your request could not be processed
           <br />
-          {response.errorMsg.message}
+          {response.errorMsg}
         </div>
       ) : (
         ""

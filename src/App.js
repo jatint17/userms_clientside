@@ -36,7 +36,7 @@ function App() {
                                     <Route exact path="/profile" component={Profile} />
                                 </Switch>
                             </div>
-                            <div className="col-md-1 col-sm-1"></div>
+                            <div className="col-md-1"></div>
                             <div className="col-md-2 col-sm-2">
                                 <img src={lock} style={{ height: '230px', paddingTop: '10px' }} />
                             </div>

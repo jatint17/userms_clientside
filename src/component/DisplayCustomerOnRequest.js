@@ -90,7 +90,7 @@ export default function DisplayCustomerOnRequest() {
 
             {response.error ? (
                 <div className="text-danger">
-                    Error Occurred: {response.error.message}
+                    Error Occurred: {response.erro}
                 </div>
             ) : ''}
 

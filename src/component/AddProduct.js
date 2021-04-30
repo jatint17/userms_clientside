@@ -139,7 +139,7 @@ export default function AddProduct() {
           <div className="text-danger">
             Sorry, your request could not be processed
             <br />
-            {response.errorMsg}
+            {response.errorMsg.message}
           </div>
         ) : (
           ""

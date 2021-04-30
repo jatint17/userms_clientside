@@ -34,7 +34,7 @@ export function productByIdAction(data) {
         })
           .catch((error) => {
             console.log("promise error",error.message);
-            store.dispatch(productByIdFail(error.message));
+            store.dispatch(productByIdFail(error));
           });
       }
 }

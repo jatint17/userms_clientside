@@ -31,8 +31,8 @@ export function displayCustomerByIdAction(data) {
       console.log("the response getCustomerById is:", response.data);
     })
       .catch((error) => {
-        console.log("promise error",error)
-        store.dispatch(displayCustomerByIdFail(error));
+        console.log("promise error",error.response.data)
+        store.dispatch(displayCustomerByIdFail(error.response.data));
       });
   }
 }
