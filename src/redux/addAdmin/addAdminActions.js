@@ -33,7 +33,7 @@ export function addAdminAction(data) {
         })
             .catch(error => {
                 console.log(error.message)
-                store.dispatch(addAdminFail(error.response.data))
+                store.dispatch(addAdminFail(error.message))
             });
     }
 }

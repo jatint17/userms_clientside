@@ -81,8 +81,8 @@ export default function DisplayCustomerOnRequest() {
             </div>
 
             {response.customer ? (
-                <div className="text-success">
-                    <h3>Customer Found:</h3>
+                <div>
+                    <h3 className="text-success">Customer Found:</h3>
                     <DisplayCustomerDetails customer={response.customer} />
                 </div>
             ) : ''}

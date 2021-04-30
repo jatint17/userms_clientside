@@ -128,7 +128,7 @@ export default function AddProduct() {
 
         {response.product ? (
           <div>
-            <h4 className="text-success">Product added</h4>
+            <h4 className="text-success" style={{paddingTop:'20px'}}>Product added</h4>
             <DisplayProductDetails product={response.product} />
           </div>
         ) : (

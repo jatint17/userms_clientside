@@ -6,11 +6,17 @@ export default function DisplayProductDetails({product}){
     let {productId, productName, price}=product;
     return(
         <div>
-            id: {productId}
-            <br/>
-            product name: {productName}
-            <br/>
-            price: {price}
+            <ul className="list-group col-md-6">
+                <li className="list-group-item">
+                    ID: {productId}
+                </li>
+                <li className="list-group-item">
+                    Product name: {productName}
+                </li>
+                <li className="list-group-item">
+                    Price: {price}
+                </li>
+            </ul>
         </div>    
     );
 }

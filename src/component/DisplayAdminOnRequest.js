@@ -90,7 +90,7 @@ export default function DisplayAdminOnRequest() {
 
             {response.error ? (
                 <div className="text-danger">
-                    {response.error.message}
+                    {response.error.response.data}
                 </div>
             ) : ''}
 

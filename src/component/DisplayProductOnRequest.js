@@ -86,8 +86,8 @@ export default function DisplayProductOnRequest() {
             </div>
 
             {response.product ? (
-                <div className="text-success">
-                    <h2>Product Found:</h2>
+                <div>
+                    <h2 className="text-success">Product Found:</h2>
                     <DisplayProductDetails product={response.product} />
 
                 </div>

@@ -112,7 +112,7 @@ export default function AddAdmin() {
       </form>
       {response.admin ? (
         <div>
-          <h4 className="text-success">Admin added</h4>
+          <h4 className="text-success" style={{paddingTop:'20px'}}>Admin added</h4>
           <DisplayAdminDetails admin={response.admin} />
         </div>
       ) : (
